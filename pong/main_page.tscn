@@ -1,0 +1,24 @@
+[gd_scene format=3 uid="uid://m76mxnietku0"]
+
+[ext_resource type="Script" uid="uid://cmj1f40mksnwd" path="res://character_body_2d.gd" id="1_j0gr7"]
+[ext_resource type="Texture2D" uid="uid://b2asn8stkjhnw" path="res://assets/Player.png" id="2_5mpow"]
+[ext_resource type="Texture2D" uid="uid://bwx67w3sbgm8i" path="res://assets/Computer.png" id="2_q3btt"]
+[ext_resource type="Script" uid="uid://di5ppvip4tqe4" path="res://character_body_2d_2.gd" id="3_5mpow"]
+
+[node name="Node2D" type="Node2D" unique_id=302114256]
+
+[node name="CharacterBody2D" type="CharacterBody2D" parent="." unique_id=1375709547]
+script = ExtResource("1_j0gr7")
+
+[node name="Sprite2D" type="Sprite2D" parent="CharacterBody2D" unique_id=459063881]
+position = Vector2(1135.9999, 313.00003)
+scale = Vector2(1.55, 1.55)
+texture = ExtResource("2_5mpow")
+
+[node name="CharacterBody2D2" type="CharacterBody2D" parent="." unique_id=1567562501]
+script = ExtResource("3_5mpow")
+
+[node name="Sprite2D" type="Sprite2D" parent="CharacterBody2D2" unique_id=1373750807]
+position = Vector2(21.00003, 326.00003)
+scale = Vector2(1.55, 1.55)
+texture = ExtResource("2_q3btt")
