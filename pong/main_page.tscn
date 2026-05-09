@@ -2,11 +2,14 @@
 
 [ext_resource type="Texture2D" uid="uid://ccvu66v50xu03" path="res://assets/Board.png" id="1_75dro"]
 [ext_resource type="Script" uid="uid://cmj1f40mksnwd" path="res://character_body_2d.gd" id="1_j0gr7"]
+[ext_resource type="Script" uid="uid://bot8snj86pwlo" path="res://main_page.gd" id="1_q3b50"]
 [ext_resource type="Texture2D" uid="uid://b2asn8stkjhnw" path="res://assets/Player.png" id="2_5mpow"]
 [ext_resource type="Texture2D" uid="uid://bwx67w3sbgm8i" path="res://assets/Computer.png" id="2_q3btt"]
 [ext_resource type="Script" uid="uid://di5ppvip4tqe4" path="res://character_body_2d_2.gd" id="3_5mpow"]
 [ext_resource type="Script" uid="uid://c5ktme8hejuti" path="res://ball.gd" id="6_btl6j"]
 [ext_resource type="Texture2D" uid="uid://yvr31h8u2yoa" path="res://assets/Ball.png" id="6_pbtym"]
+[ext_resource type="Script" uid="uid://cg7lrdcql5mn5" path="res://ScoreBoard.gd" id="9_anrpf"]
+[ext_resource type="Script" uid="uid://cb2s1g5hv38wl" path="res://orange_score.gd" id="10_aihjp"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_75dro"]
 size = Vector2(28, 186)
@@ -18,6 +21,7 @@ size = Vector2(24, 190)
 radius = 16.03122
 
 [node name="Node2D" type="Node2D" unique_id=302114256]
+script = ExtResource("1_q3b50")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=2033655986]
 texture_filter = 2
@@ -51,19 +55,35 @@ texture = ExtResource("2_q3btt")
 position = Vector2(22, 327)
 shape = SubResource("RectangleShape2D_pbtym")
 
-[node name="CharacterBody2D3" type="CharacterBody2D" parent="." unique_id=193951003]
+[node name="Ball" type="CharacterBody2D" parent="." unique_id=193951003]
 script = ExtResource("6_btl6j")
 
-[node name="Sprite2D" type="Sprite2D" parent="CharacterBody2D3" unique_id=47610442]
+[node name="Sprite2D" type="Sprite2D" parent="Ball" unique_id=47610442]
 position = Vector2(111, 321)
 texture = ExtResource("6_pbtym")
 
-[node name="Area2D" type="Area2D" parent="CharacterBody2D3" unique_id=934225098]
+[node name="Area2D" type="Area2D" parent="Ball" unique_id=934225098]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D3/Area2D" unique_id=1571522813]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ball/Area2D" unique_id=1571522813]
 position = Vector2(111, 321)
 shape = SubResource("CircleShape2D_q3b50")
 
-[connection signal="area_entered" from="CharacterBody2D3/Area2D" to="CharacterBody2D3" method="_on_area_2d_area_entered"]
-[connection signal="area_shape_entered" from="CharacterBody2D3/Area2D" to="CharacterBody2D3" method="_on_area_2d_area_shape_entered"]
-[connection signal="body_entered" from="CharacterBody2D3/Area2D" to="CharacterBody2D3" method="_on_area_2d_body_entered"]
+[node name="blue_score" type="Label" parent="." unique_id=789994006]
+offset_left = 470.0
+offset_top = 13.0
+offset_right = 564.0
+offset_bottom = 99.0
+text = "0"
+script = ExtResource("9_anrpf")
+
+[node name="orange_score" type="Label" parent="." unique_id=1956572431]
+offset_left = 660.0
+offset_top = 2.0
+offset_right = 714.0
+offset_bottom = 40.0
+script = ExtResource("10_aihjp")
+
+[connection signal="score" from="Ball" to="." method="_ball_score"]
+[connection signal="area_entered" from="Ball/Area2D" to="Ball" method="_on_area_2d_area_entered"]
+[connection signal="area_shape_entered" from="Ball/Area2D" to="Ball" method="_on_area_2d_area_shape_entered"]
+[connection signal="body_entered" from="Ball/Area2D" to="Ball" method="_on_area_2d_body_entered"]
