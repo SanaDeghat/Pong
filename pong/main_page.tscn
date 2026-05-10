@@ -11,6 +11,7 @@
 [ext_resource type="Script" uid="uid://cg7lrdcql5mn5" path="res://ScoreBoard.gd" id="9_anrpf"]
 [ext_resource type="FontFile" uid="uid://bwy6rhh6dafv2" path="res://assets/Minecraft.ttf" id="9_vws38"]
 [ext_resource type="Script" uid="uid://cb2s1g5hv38wl" path="res://orange_score.gd" id="10_aihjp"]
+[ext_resource type="Script" uid="uid://cw7g1af1onm6l" path="res://pause_menu.gd" id="12_w00gg"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_pbtym"]
 size = Vector2(24, 190)
@@ -22,6 +23,7 @@ size = Vector2(28, 186)
 radius = 16.03122
 
 [node name="Node2D" type="Node2D" unique_id=302114256]
+process_mode = 1
 script = ExtResource("1_q3b50")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=2033655986]
@@ -91,7 +93,33 @@ horizontal_alignment = 1
 vertical_alignment = 1
 script = ExtResource("10_aihjp")
 
+[node name="pause_menu" type="MarginContainer" parent="." unique_id=464995422]
+process_mode = 2
+visible = false
+offset_right = 1147.0
+offset_bottom = 642.0
+script = ExtResource("12_w00gg")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="pause_menu" unique_id=136300064]
+layout_mode = 2
+alignment = 1
+
+[node name="resume_btn" type="Button" parent="pause_menu/VBoxContainer" unique_id=396209107]
+layout_mode = 2
+text = "Resume Game"
+
+[node name="restart_btn" type="Button" parent="pause_menu/VBoxContainer" unique_id=1603115720]
+layout_mode = 2
+text = "Restart Game"
+
+[node name="quit_btn" type="Button" parent="pause_menu/VBoxContainer" unique_id=540717764]
+layout_mode = 2
+text = "Quit Game"
+
 [connection signal="score" from="Ball" to="." method="_ball_score"]
 [connection signal="area_entered" from="Ball/Area2D" to="Ball" method="_on_area_2d_area_entered"]
 [connection signal="area_shape_entered" from="Ball/Area2D" to="Ball" method="_on_area_2d_area_shape_entered"]
 [connection signal="body_entered" from="Ball/Area2D" to="Ball" method="_on_area_2d_body_entered"]
+[connection signal="pressed" from="pause_menu/VBoxContainer/resume_btn" to="pause_menu" method="_on_resume_btn_pressed"]
+[connection signal="pressed" from="pause_menu/VBoxContainer/restart_btn" to="." method="_on_restart_btn_pressed"]
+[connection signal="pressed" from="pause_menu/VBoxContainer/quit_btn" to="." method="_on_quit_btn_pressed"]
