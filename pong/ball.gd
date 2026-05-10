@@ -15,11 +15,12 @@ func _physics_process(delta: float) -> void:
 	
 func reset( location :int) : 
 	if (location<0):
-		position.x= 0
 		dirx = 1
 	else:
-		position.x= 900
 		dirx = -1
+	position.x=450
+	position.y=0
+	velocity.y=0
 	score.emit(location)
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	dirx*=-1

@@ -11,9 +11,13 @@ config_version=5
 [application]
 
 config/name="Pong"
-run/main_scene="res://main_page.tscn"
+run/main_scene="uid://b2cwxuharntt2"
 config/features=PackedStringArray("4.6", "GL Compatibility")
 config/icon="res://icon.svg"
+
+[autoload]
+
+Global="*uid://bea8oa4pngcf5"
 
 [display]
 

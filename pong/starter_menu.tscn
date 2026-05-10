@@ -1,0 +1,48 @@
+[gd_scene format=3 uid="uid://b2cwxuharntt2"]
+
+[ext_resource type="Script" uid="uid://b02r21b2kr8o5" path="res://starter_menu.gd" id="1_thjnl"]
+[ext_resource type="Texture2D" uid="uid://ccvu66v50xu03" path="res://assets/Board.png" id="2_qbbcb"]
+[ext_resource type="Script" uid="uid://db0y5nh6b27v4" path="res://one_player.gd" id="3_3tlw5"]
+[ext_resource type="Script" uid="uid://bb1t7op7ex5fp" path="res://startButton.gd" id="3_baj63"]
+[ext_resource type="Script" uid="uid://eliecyt1b6ka" path="res://two_player.gd" id="4_baj63"]
+
+[node name="Node2D" type="Node2D" unique_id=114162151]
+script = ExtResource("1_thjnl")
+
+[node name="background" type="Sprite2D" parent="." unique_id=162304887]
+position = Vector2(575.99994, 324.00003)
+scale = Vector2(1.4364088, 1.4241757)
+texture = ExtResource("2_qbbcb")
+
+[node name="startButton" type="Button" parent="." unique_id=1771976872]
+offset_left = 455.0
+offset_top = 195.0
+offset_right = 695.0
+offset_bottom = 288.0
+text = "Start "
+script = ExtResource("3_baj63")
+
+[node name="onePlayer" type="Button" parent="." unique_id=384047345]
+visible = false
+offset_left = 333.0
+offset_top = 192.0
+offset_right = 539.0
+offset_bottom = 288.0
+text = "1 player"
+script = ExtResource("3_3tlw5")
+
+[node name="twoPlayer" type="Button" parent="." unique_id=66213483]
+visible = false
+offset_left = 609.0
+offset_top = 194.0
+offset_right = 799.0
+offset_bottom = 287.0
+text = "2 player"
+script = ExtResource("4_baj63")
+
+[connection signal="choosePlayerAmount" from="." to="onePlayer" method="_on_node_2d_choose_player_amount"]
+[connection signal="choosePlayerAmount" from="." to="twoPlayer" method="_on_node_2d_choose_player_amount"]
+[connection signal="pressed" from="startButton" to="." method="_on_start_pressed"]
+[connection signal="pressed" from="startButton" to="startButton" method="_on_pressed"]
+[connection signal="pressed" from="onePlayer" to="." method="_on_one_player_pressed"]
+[connection signal="pressed" from="twoPlayer" to="." method="_on_two_player_pressed"]
