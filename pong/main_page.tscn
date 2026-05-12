@@ -9,9 +9,11 @@
 [ext_resource type="Script" uid="uid://c5ktme8hejuti" path="res://ball.gd" id="6_btl6j"]
 [ext_resource type="Texture2D" uid="uid://yvr31h8u2yoa" path="res://assets/Ball.png" id="6_pbtym"]
 [ext_resource type="Script" uid="uid://cg7lrdcql5mn5" path="res://ScoreBoard.gd" id="9_anrpf"]
-[ext_resource type="FontFile" uid="uid://bwy6rhh6dafv2" path="res://assets/Minecraft.ttf" id="9_vws38"]
+[ext_resource type="FontFile" uid="uid://bwy6rhh6dafv2" path="res://assets/font/Minecraft.ttf" id="9_vws38"]
 [ext_resource type="Script" uid="uid://cb2s1g5hv38wl" path="res://orange_score.gd" id="10_aihjp"]
 [ext_resource type="Script" uid="uid://cw7g1af1onm6l" path="res://pause_menu.gd" id="12_w00gg"]
+[ext_resource type="Texture2D" uid="uid://ncxhedbbua02" path="res://assets/font/Pink White and Purple 8-Bit Gaming Tournament Banner (4).png" id="13_rvig6"]
+[ext_resource type="Theme" uid="uid://i1x2m4kjm1tr" path="res://pause-button.tres" id="14_rvig6"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_pbtym"]
 size = Vector2(24, 190)
@@ -95,31 +97,60 @@ script = ExtResource("10_aihjp")
 
 [node name="pause_menu" type="MarginContainer" parent="." unique_id=464995422]
 process_mode = 2
-visible = false
 offset_right = 1147.0
 offset_bottom = 642.0
 script = ExtResource("12_w00gg")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="pause_menu" unique_id=136300064]
-layout_mode = 2
-alignment = 1
+[node name="Sprite2D" type="Sprite2D" parent="pause_menu" unique_id=183210868]
+position = Vector2(575.5, 324.00003)
+scale = Vector2(0.234, 0.235)
+texture = ExtResource("13_rvig6")
 
-[node name="resume_btn" type="Button" parent="pause_menu/VBoxContainer" unique_id=396209107]
-layout_mode = 2
-text = "Resume Game"
+[node name="resume_btn" type="Button" parent="pause_menu/Sprite2D" unique_id=396209107]
+offset_left = -574.7863
+offset_top = -468.0852
+offset_right = 572.2137
+offset_bottom = -234.0852
+theme = ExtResource("14_rvig6")
+theme_override_colors/font_pressed_color = Color(0.6666667, 0.8235294, 0.38431373, 1)
+theme_override_colors/font_hover_color = Color(0.6666667, 0.8235294, 0.38431373, 1)
+theme_override_colors/icon_pressed_color = Color(0.6666667, 0.8235294, 0.38431373, 1)
+text = "Resume"
 
-[node name="restart_btn" type="Button" parent="pause_menu/VBoxContainer" unique_id=1603115720]
-layout_mode = 2
-text = "Restart Game"
+[node name="restart_btn" type="Button" parent="pause_menu/Sprite2D" unique_id=1603115720]
+offset_left = -570.51276
+offset_top = -165.95757
+offset_right = 576.48724
+offset_bottom = 27.042435
+theme = ExtResource("14_rvig6")
+theme_override_colors/font_pressed_color = Color(0.6666667, 0.8235294, 0.38431373, 1)
+theme_override_colors/font_hover_color = Color(0.6666667, 0.8235294, 0.38431373, 1)
+text = "Restart"
 
-[node name="quit_btn" type="Button" parent="pause_menu/VBoxContainer" unique_id=540717764]
-layout_mode = 2
-text = "Quit Game"
+[node name="settings-btn" type="Button" parent="pause_menu/Sprite2D" unique_id=560495041]
+offset_left = -476.49567
+offset_top = 110.63815
+offset_right = 471.50433
+offset_bottom = 303.63815
+theme = ExtResource("14_rvig6")
+theme_override_colors/font_pressed_color = Color(0.88128006, 0.5664, 0.96, 1)
+theme_override_colors/font_hover_color = Color(0.88235295, 0.5647059, 0.9607843, 1)
+text = "Settings"
+
+[node name="quit_btn" type="Button" parent="pause_menu/Sprite2D" unique_id=540717764]
+offset_left = -570.5129
+offset_top = 387.23386
+offset_right = 576.4871
+offset_bottom = 580.2339
+theme = ExtResource("14_rvig6")
+theme_override_colors/font_pressed_color = Color(0.9411765, 0.11372549, 0.15686275, 1)
+theme_override_colors/font_hover_color = Color(0.9411765, 0.11372549, 0.15686275, 1)
+text = "Exit"
 
 [connection signal="score" from="Ball" to="." method="_ball_score"]
 [connection signal="area_entered" from="Ball/Area2D" to="Ball" method="_on_area_2d_area_entered"]
 [connection signal="area_shape_entered" from="Ball/Area2D" to="Ball" method="_on_area_2d_area_shape_entered"]
 [connection signal="body_entered" from="Ball/Area2D" to="Ball" method="_on_area_2d_body_entered"]
-[connection signal="pressed" from="pause_menu/VBoxContainer/resume_btn" to="pause_menu" method="_on_resume_btn_pressed"]
-[connection signal="pressed" from="pause_menu/VBoxContainer/restart_btn" to="." method="_on_restart_btn_pressed"]
-[connection signal="pressed" from="pause_menu/VBoxContainer/quit_btn" to="." method="_on_quit_btn_pressed"]
+[connection signal="pressed" from="pause_menu/Sprite2D/resume_btn" to="pause_menu" method="_on_resume_btn_pressed"]
+[connection signal="pressed" from="pause_menu/Sprite2D/restart_btn" to="." method="_on_restart_btn_pressed"]
+[connection signal="pressed" from="pause_menu/Sprite2D/quit_btn" to="." method="_on_quit_btn_pressed"]

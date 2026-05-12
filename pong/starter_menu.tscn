@@ -1,48 +1,144 @@
 [gd_scene format=3 uid="uid://b2cwxuharntt2"]
 
 [ext_resource type="Script" uid="uid://b02r21b2kr8o5" path="res://starter_menu.gd" id="1_thjnl"]
-[ext_resource type="Texture2D" uid="uid://ccvu66v50xu03" path="res://assets/Board.png" id="2_qbbcb"]
+[ext_resource type="VideoStream" uid="uid://chbry1l8apxhs" path="res://assets/font/YTDown_YouTube_BEACH-HOUSE-LEMON-GLOW_Media_08qd-vsHbaY_003_480p.ogv" id="2_efxun"]
 [ext_resource type="Script" uid="uid://db0y5nh6b27v4" path="res://one_player.gd" id="3_3tlw5"]
-[ext_resource type="Script" uid="uid://bb1t7op7ex5fp" path="res://startButton.gd" id="3_baj63"]
+[ext_resource type="FontFile" uid="uid://243jd4bh72jq" path="res://assets/font/Disket-Mono-Regular.ttf" id="3_efxun"]
+[ext_resource type="Texture2D" uid="uid://c2g2jkcvmqai" path="res://assets/font/Pink White and Purple 8-Bit Gaming Tournament Banner (2).png" id="3_lijk4"]
 [ext_resource type="Script" uid="uid://eliecyt1b6ka" path="res://two_player.gd" id="4_baj63"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_lijk4"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_vm2c7"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_tsjeh"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ck0tr"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_n47a6"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_baj63"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_efxun"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_nlqat"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_d12d5"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_mwqcb"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_r5ocj"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_rpx6q"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_6f73d"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_k7roc"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_5r2dq"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_nq0ag"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_3ufs1"]
 
 [node name="Node2D" type="Node2D" unique_id=114162151]
 script = ExtResource("1_thjnl")
 
-[node name="background" type="Sprite2D" parent="." unique_id=162304887]
-position = Vector2(575.99994, 324.00003)
-scale = Vector2(1.4364088, 1.4241757)
-texture = ExtResource("2_qbbcb")
+[node name="AspectRatioContainer" type="AspectRatioContainer" parent="." unique_id=1845740782]
+offset_right = 1152.0
+offset_bottom = 648.0
+ratio = 1.8
+stretch_mode = 3
 
-[node name="startButton" type="Button" parent="." unique_id=1771976872]
-offset_left = 455.0
-offset_top = 195.0
-offset_right = 695.0
-offset_bottom = 288.0
-text = "Start "
-script = ExtResource("3_baj63")
+[node name="VideoStreamPlayer" type="VideoStreamPlayer" parent="AspectRatioContainer" unique_id=334906296]
+texture_filter = 1
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+size_flags_stretch_ratio = 7.8
+localize_numeral_system = false
+stream = ExtResource("2_efxun")
+volume_db = -80.0
+autoplay = true
+expand = true
+loop = true
+
+[node name="background" type="Sprite2D" parent="." unique_id=162304887]
+position = Vector2(575.9999, 324)
+scale = Vector2(0.26458427, 0.2645978)
+texture = ExtResource("3_lijk4")
 
 [node name="onePlayer" type="Button" parent="." unique_id=384047345]
-visible = false
-offset_left = 333.0
-offset_top = 192.0
-offset_right = 539.0
-offset_bottom = 288.0
-text = "1 player"
+offset_left = 356.0
+offset_top = 282.0
+offset_right = 795.0
+offset_bottom = 345.0
+theme_override_colors/font_focus_color = Color(0.6666667, 0.8235294, 0.38431373, 1)
+theme_override_colors/font_pressed_color = Color(0.6666667, 0.8235294, 0.38431373, 1)
+theme_override_colors/font_hover_color = Color(0.6666667, 0.8235294, 0.38431373, 1)
+theme_override_colors/font_hover_pressed_color = Color(0.6666667, 0.8235294, 0.38431373, 1)
+theme_override_fonts/font = ExtResource("3_efxun")
+theme_override_font_sizes/font_size = 35
+theme_override_styles/normal = SubResource("StyleBoxEmpty_lijk4")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_vm2c7")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_tsjeh")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_ck0tr")
+text = "Single Player Game"
 script = ExtResource("3_3tlw5")
 
 [node name="twoPlayer" type="Button" parent="." unique_id=66213483]
-visible = false
-offset_left = 609.0
-offset_top = 194.0
-offset_right = 799.0
-offset_bottom = 287.0
-text = "2 player"
+offset_left = 393.0
+offset_top = 318.0
+offset_right = 759.0
+offset_bottom = 411.0
+theme_override_colors/font_color = Color(0.875, 0.875, 0.875, 1)
+theme_override_colors/font_focus_color = Color(0.6666667, 0.8235294, 0.38431373, 1)
+theme_override_colors/font_pressed_color = Color(0.6666667, 0.8235294, 0.38431373, 1)
+theme_override_colors/font_hover_color = Color(0.6666667, 0.8235294, 0.38431373, 1)
+theme_override_colors/font_hover_pressed_color = Color(0.6666667, 0.8235294, 0.38431373, 1)
+theme_override_fonts/font = ExtResource("3_efxun")
+theme_override_font_sizes/font_size = 35
+theme_override_styles/normal = SubResource("StyleBoxEmpty_n47a6")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_baj63")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_efxun")
+text = "Two Player Game"
 script = ExtResource("4_baj63")
+
+[node name="settings_btn" type="Button" parent="." unique_id=1355623282]
+offset_left = 478.0
+offset_top = 384.0
+offset_right = 673.0
+offset_bottom = 450.0
+theme_override_colors/font_pressed_color = Color(0.88235295, 0.5647059, 0.9607843, 1)
+theme_override_colors/font_hover_color = Color(0.88235295, 0.5647059, 0.9607843, 1)
+theme_override_fonts/font = ExtResource("3_efxun")
+theme_override_font_sizes/font_size = 35
+theme_override_styles/normal = SubResource("StyleBoxEmpty_nlqat")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_d12d5")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_mwqcb")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_r5ocj")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_rpx6q")
+text = "Settings"
+
+[node name="exit_btn" type="Button" parent="." unique_id=632668791]
+offset_left = 493.0
+offset_top = 435.0
+offset_right = 660.0
+offset_bottom = 502.0
+theme_override_colors/font_focus_color = Color(0.9411765, 0.11372549, 0.15686275, 1)
+theme_override_colors/font_pressed_color = Color(0.9411765, 0.11372549, 0.15686275, 1)
+theme_override_colors/font_hover_color = Color(0.9411765, 0.11372549, 0.15686275, 1)
+theme_override_colors/font_hover_pressed_color = Color(0.9411765, 0.11372549, 0.15686275, 1)
+theme_override_fonts/font = ExtResource("3_efxun")
+theme_override_font_sizes/font_size = 35
+theme_override_styles/normal = SubResource("StyleBoxEmpty_6f73d")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_k7roc")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_5r2dq")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_nq0ag")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_3ufs1")
+text = "Exit"
 
 [connection signal="choosePlayerAmount" from="." to="onePlayer" method="_on_node_2d_choose_player_amount"]
 [connection signal="choosePlayerAmount" from="." to="twoPlayer" method="_on_node_2d_choose_player_amount"]
-[connection signal="pressed" from="startButton" to="." method="_on_start_pressed"]
-[connection signal="pressed" from="startButton" to="startButton" method="_on_pressed"]
 [connection signal="pressed" from="onePlayer" to="." method="_on_one_player_pressed"]
 [connection signal="pressed" from="twoPlayer" to="." method="_on_two_player_pressed"]

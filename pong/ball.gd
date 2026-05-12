@@ -1,29 +1,49 @@
 extends CharacterBody2D
 
+@export var START_SPEED: float = 500.0
+@export var MAX_SPEED: float = 1500.0
+@export var SPEED_ACCEL: float = 40.0
 
-var SPEED = 400.0
-var dirx = 1
-var diry = 1
-signal score( score :int )
-func _physics_process(delta: float) -> void:
-	velocity.x = dirx* SPEED
-	move_and_slide()
-	if position.x>1100 ||position.x<-200:
-		reset( position.x) 
-	if position.y>330 ||position.y<-330:
-		velocity.y*=-1
+var current_speed: float = START_SPEED
+var direction: Vector2 = Vector2.ZERO
+
+signal score(location: int)
+
+func _ready() -> void:
+	randomize()
+	reset(-1) 
 	
-func reset( location :int) : 
-	if (location<0):
-		dirx = 1
-	else:
-		dirx = -1
-	position.x=450
-	position.y=0
-	velocity.y=0
-	score.emit(location)
+	
+func _physics_process(delta: float) -> void:
+	velocity = direction * current_speed
+	move_and_slide()
+	
+	if global_position.x > 1100 or global_position.x < -200:
+		reset(global_position.x)
+	
+	if global_position.y > 330 and direction.y > 0:
+		direction.y *= -1
+	elif global_position.y < -330 and direction.y < 0:
+		direction.y *= -1
+
+func reset(location: float) -> void:
+	global_position = Vector2(450, 0)
+	current_speed = START_SPEED
+	
+	var dir_x = 1 if location < 0 else -1
+	var dir_y = randf_range(-0.4, 0.4) 
+	
+	direction = Vector2(dir_x, dir_y).normalized()
+	score.emit(int(location))
+
 func _on_area_2d_body_entered(body: Node2D) -> void:
-	dirx*=-1
-	SPEED +=5
-	velocity.y= diry* body.position.y
+	var ho = global_position.y - body.global_position.y
+	
+	var ni = ho / 50.0 
+	
+	direction.x *= -1
+	direction.y = ni
+	direction = direction.normalized() 
+	current_speed = min(current_speed + SPEED_ACCEL, MAX_SPEED)
+	
 	
