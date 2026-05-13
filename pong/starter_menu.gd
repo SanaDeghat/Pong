@@ -24,3 +24,7 @@ func _on_one_player_pressed() -> void:
 func _on_two_player_pressed() -> void:
 	Global.playerNum=2
 	get_tree().change_scene_to_file("res://main_page.tscn")
+
+
+func _on_exit_btn_pressed() -> void:
+	pass # Replace with function body.

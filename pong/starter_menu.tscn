@@ -3,9 +3,16 @@
 [ext_resource type="Script" uid="uid://b02r21b2kr8o5" path="res://starter_menu.gd" id="1_thjnl"]
 [ext_resource type="VideoStream" uid="uid://chbry1l8apxhs" path="res://assets/font/YTDown_YouTube_BEACH-HOUSE-LEMON-GLOW_Media_08qd-vsHbaY_003_480p.ogv" id="2_efxun"]
 [ext_resource type="Script" uid="uid://db0y5nh6b27v4" path="res://one_player.gd" id="3_3tlw5"]
+[ext_resource type="Script" uid="uid://dhb61tij5v56t" path="res://start_menu.gd" id="3_ck0tr"]
 [ext_resource type="FontFile" uid="uid://243jd4bh72jq" path="res://assets/font/Disket-Mono-Regular.ttf" id="3_efxun"]
 [ext_resource type="Texture2D" uid="uid://c2g2jkcvmqai" path="res://assets/font/Pink White and Purple 8-Bit Gaming Tournament Banner (2).png" id="3_lijk4"]
 [ext_resource type="Script" uid="uid://eliecyt1b6ka" path="res://two_player.gd" id="4_baj63"]
+[ext_resource type="Texture2D" uid="uid://cbgg0p2tsy7qv" path="res://assets/font/Main_settings_menu.png" id="4_ck0tr"]
+[ext_resource type="Script" uid="uid://cfcp08uo24otb" path="res://start_settings_menu.gd" id="8_d12d5"]
+[ext_resource type="Texture2D" uid="uid://c1oj32y7p0yud" path="res://assets/mouse.png" id="9_d12d5"]
+[ext_resource type="Texture2D" uid="uid://cfcojdpuwwafy" path="res://assets/keyboard.png" id="10_mwqcb"]
+[ext_resource type="Script" uid="uid://b01hsubmuinxg" path="res://check_button.gd" id="11_r5ocj"]
+[ext_resource type="Texture2D" uid="uid://f0utvxt0fri5" path="res://icon.svg" id="12_rpx6q"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_lijk4"]
 
@@ -41,6 +48,12 @@
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_3ufs1"]
 
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_7cfyr"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_v6you"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_3bhke"]
+
 [node name="Node2D" type="Node2D" unique_id=114162151]
 script = ExtResource("1_thjnl")
 
@@ -63,22 +76,27 @@ autoplay = true
 expand = true
 loop = true
 
-[node name="background" type="Sprite2D" parent="." unique_id=162304887]
+[node name="startMenu" type="MarginContainer" parent="." unique_id=245721790]
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("3_ck0tr")
+
+[node name="background" type="Sprite2D" parent="startMenu" unique_id=162304887]
 position = Vector2(575.9999, 324)
 scale = Vector2(0.26458427, 0.2645978)
 texture = ExtResource("3_lijk4")
 
-[node name="onePlayer" type="Button" parent="." unique_id=384047345]
-offset_left = 356.0
-offset_top = 282.0
-offset_right = 795.0
-offset_bottom = 345.0
+[node name="onePlayer" type="Button" parent="startMenu/background" unique_id=384047345]
+offset_left = -831.4927
+offset_top = -117.15892
+offset_right = 824.5073
+offset_bottom = 31.84108
 theme_override_colors/font_focus_color = Color(0.6666667, 0.8235294, 0.38431373, 1)
 theme_override_colors/font_pressed_color = Color(0.6666667, 0.8235294, 0.38431373, 1)
 theme_override_colors/font_hover_color = Color(0.6666667, 0.8235294, 0.38431373, 1)
 theme_override_colors/font_hover_pressed_color = Color(0.6666667, 0.8235294, 0.38431373, 1)
 theme_override_fonts/font = ExtResource("3_efxun")
-theme_override_font_sizes/font_size = 35
+theme_override_font_sizes/font_size = 132
 theme_override_styles/normal = SubResource("StyleBoxEmpty_lijk4")
 theme_override_styles/pressed = SubResource("StyleBoxEmpty_vm2c7")
 theme_override_styles/hover = SubResource("StyleBoxEmpty_tsjeh")
@@ -86,33 +104,33 @@ theme_override_styles/focus = SubResource("StyleBoxEmpty_ck0tr")
 text = "Single Player Game"
 script = ExtResource("3_3tlw5")
 
-[node name="twoPlayer" type="Button" parent="." unique_id=66213483]
-offset_left = 393.0
-offset_top = 318.0
-offset_right = 759.0
-offset_bottom = 411.0
+[node name="twoPlayer" type="Button" parent="startMenu/background" unique_id=66213483]
+offset_left = -691.65063
+offset_top = 75.58644
+offset_right = 688.34937
+offset_bottom = 224.58644
 theme_override_colors/font_color = Color(0.875, 0.875, 0.875, 1)
 theme_override_colors/font_focus_color = Color(0.6666667, 0.8235294, 0.38431373, 1)
 theme_override_colors/font_pressed_color = Color(0.6666667, 0.8235294, 0.38431373, 1)
 theme_override_colors/font_hover_color = Color(0.6666667, 0.8235294, 0.38431373, 1)
 theme_override_colors/font_hover_pressed_color = Color(0.6666667, 0.8235294, 0.38431373, 1)
 theme_override_fonts/font = ExtResource("3_efxun")
-theme_override_font_sizes/font_size = 35
+theme_override_font_sizes/font_size = 132
 theme_override_styles/normal = SubResource("StyleBoxEmpty_n47a6")
 theme_override_styles/pressed = SubResource("StyleBoxEmpty_baj63")
 theme_override_styles/hover = SubResource("StyleBoxEmpty_efxun")
 text = "Two Player Game"
 script = ExtResource("4_baj63")
 
-[node name="settings_btn" type="Button" parent="." unique_id=1355623282]
-offset_left = 478.0
-offset_top = 384.0
-offset_right = 673.0
-offset_bottom = 450.0
+[node name="settings_btn" type="Button" parent="startMenu/background" unique_id=1355623282]
+offset_left = -366.61246
+offset_top = 275.89047
+offset_right = 369.38754
+offset_bottom = 424.89047
 theme_override_colors/font_pressed_color = Color(0.88235295, 0.5647059, 0.9607843, 1)
 theme_override_colors/font_hover_color = Color(0.88235295, 0.5647059, 0.9607843, 1)
 theme_override_fonts/font = ExtResource("3_efxun")
-theme_override_font_sizes/font_size = 35
+theme_override_font_sizes/font_size = 132
 theme_override_styles/normal = SubResource("StyleBoxEmpty_nlqat")
 theme_override_styles/pressed = SubResource("StyleBoxEmpty_d12d5")
 theme_override_styles/hover = SubResource("StyleBoxEmpty_mwqcb")
@@ -120,17 +138,17 @@ theme_override_styles/disabled = SubResource("StyleBoxEmpty_r5ocj")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_rpx6q")
 text = "Settings"
 
-[node name="exit_btn" type="Button" parent="." unique_id=632668791]
-offset_left = 493.0
-offset_top = 435.0
-offset_right = 660.0
-offset_bottom = 502.0
+[node name="exit_btn" type="Button" parent="startMenu/background" unique_id=632668791]
+offset_left = -185.19574
+offset_top = 468.6358
+offset_right = 182.80426
+offset_bottom = 617.6358
 theme_override_colors/font_focus_color = Color(0.9411765, 0.11372549, 0.15686275, 1)
 theme_override_colors/font_pressed_color = Color(0.9411765, 0.11372549, 0.15686275, 1)
 theme_override_colors/font_hover_color = Color(0.9411765, 0.11372549, 0.15686275, 1)
 theme_override_colors/font_hover_pressed_color = Color(0.9411765, 0.11372549, 0.15686275, 1)
 theme_override_fonts/font = ExtResource("3_efxun")
-theme_override_font_sizes/font_size = 35
+theme_override_font_sizes/font_size = 132
 theme_override_styles/normal = SubResource("StyleBoxEmpty_6f73d")
 theme_override_styles/pressed = SubResource("StyleBoxEmpty_k7roc")
 theme_override_styles/hover = SubResource("StyleBoxEmpty_5r2dq")
@@ -138,7 +156,57 @@ theme_override_styles/disabled = SubResource("StyleBoxEmpty_nq0ag")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_3ufs1")
 text = "Exit"
 
-[connection signal="choosePlayerAmount" from="." to="onePlayer" method="_on_node_2d_choose_player_amount"]
-[connection signal="choosePlayerAmount" from="." to="twoPlayer" method="_on_node_2d_choose_player_amount"]
-[connection signal="pressed" from="onePlayer" to="." method="_on_one_player_pressed"]
-[connection signal="pressed" from="twoPlayer" to="." method="_on_two_player_pressed"]
+[node name="settings_menu" type="MarginContainer" parent="." unique_id=596484495]
+process_mode = 3
+visible = false
+offset_right = 1147.0
+offset_bottom = 642.0
+script = ExtResource("8_d12d5")
+metadata/_edit_use_anchors_ = true
+
+[node name="settings_menu_pic" type="Sprite2D" parent="settings_menu" unique_id=2080578022]
+position = Vector2(575.5, 324.00003)
+scale = Vector2(0.324, 0.325)
+texture = ExtResource("4_ck0tr")
+
+[node name="Sprite2D" type="Sprite2D" parent="settings_menu/settings_menu_pic" unique_id=1340383854]
+scale = Vector2(0.7, 0.7)
+
+[node name="MarginContainer" type="MarginContainer" parent="settings_menu/settings_menu_pic/Sprite2D" unique_id=1954828794]
+offset_left = -151.70898
+offset_top = -42.553345
+offset_right = 160.29102
+offset_bottom = 165.44666
+
+[node name="CheckButton" type="CheckButton" parent="settings_menu/settings_menu_pic/Sprite2D/MarginContainer" unique_id=820255503]
+layout_mode = 2
+theme_override_icons/checked = ExtResource("9_d12d5")
+theme_override_icons/unchecked = ExtResource("10_mwqcb")
+button_mask = 7
+script = ExtResource("11_r5ocj")
+
+[node name="HSlider" type="HSlider" parent="settings_menu/settings_menu_pic/Sprite2D" unique_id=814228916]
+offset_left = -992.0635
+offset_top = 334.3463
+offset_right = 998.16846
+offset_bottom = 863.2218
+theme_override_icons/grabber = ExtResource("12_rpx6q")
+
+[node name="backToPause" type="Button" parent="settings_menu/settings_menu_pic/Sprite2D" unique_id=1471640318]
+offset_left = -1315.6289
+offset_top = -1033.4348
+offset_right = -760.07324
+offset_bottom = -814.58984
+theme_override_styles/normal = SubResource("StyleBoxEmpty_7cfyr")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_v6you")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_3bhke")
+
+[connection signal="choosePlayerAmount" from="." to="startMenu/background/onePlayer" method="_on_node_2d_choose_player_amount"]
+[connection signal="choosePlayerAmount" from="." to="startMenu/background/twoPlayer" method="_on_node_2d_choose_player_amount"]
+[connection signal="pressed" from="startMenu/background/onePlayer" to="." method="_on_one_player_pressed"]
+[connection signal="pressed" from="startMenu/background/twoPlayer" to="." method="_on_two_player_pressed"]
+[connection signal="pressed" from="startMenu/background/settings_btn" to="settings_menu" method="_on_settingsbtn_pressed"]
+[connection signal="pressed" from="startMenu/background/settings_btn" to="startMenu" method="_on_settingsbtn_pressed"]
+[connection signal="pressed" from="startMenu/background/exit_btn" to="." method="_on_exit_btn_pressed"]
+[connection signal="pressed" from="settings_menu/settings_menu_pic/Sprite2D/MarginContainer/CheckButton" to="settings_menu/settings_menu_pic/Sprite2D/MarginContainer/CheckButton" method="_on_pressed"]
+[connection signal="pressed" from="settings_menu/settings_menu_pic/Sprite2D/backToPause" to="settings_menu" method="_on_button_pressed"]
