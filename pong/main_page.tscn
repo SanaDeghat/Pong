@@ -26,6 +26,14 @@ size = Vector2(24, 190)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_75dro"]
 size = Vector2(28, 186)
 
+[sub_resource type="Curve" id="Curve_ochbf"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.96851856, 0.119092345), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Gradient" id="Gradient_ochbf"]
+offsets = PackedFloat32Array(0.010288066, 0.46502057, 0.82510287)
+colors = PackedColorArray(0.9951183, 0.5607581, 0.74409515, 1, 0.9997661, 0.93690264, 0.48313376, 1, 0.65999997, 0.966, 1, 1)
+
 [sub_resource type="CircleShape2D" id="CircleShape2D_q3b50"]
 radius = 16.03122
 
@@ -83,6 +91,29 @@ script = ExtResource("6_btl6j")
 [node name="Sprite2D" type="Sprite2D" parent="Ball" unique_id=47610442]
 position = Vector2(63, 326)
 texture = ExtResource("6_pbtym")
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="Ball" unique_id=1413293219]
+position = Vector2(63, 326)
+emitting = false
+amount = 50
+lifetime = 1.5999999999999999
+one_shot = true
+explosiveness = 1.0
+lifetime_randomness = 1.0
+direction = Vector2(-1, 0)
+spread = 60.0
+gravity = Vector2(0, 150)
+initial_velocity_min = 50.0
+initial_velocity_max = 200.0
+scale_amount_min = 4.0
+scale_amount_max = 8.0
+scale_amount_curve = SubResource("Curve_ochbf")
+split_scale = true
+scale_curve_x = null
+scale_curve_y = null
+color_ramp = SubResource("Gradient_ochbf")
+hue_variation_min = 0.1
+hue_variation_max = 1.0
 
 [node name="Area2D" type="Area2D" parent="Ball" unique_id=934225098]
 
