@@ -14,6 +14,11 @@
 [ext_resource type="Script" uid="uid://cw7g1af1onm6l" path="res://pause_menu.gd" id="12_w00gg"]
 [ext_resource type="Texture2D" uid="uid://ncxhedbbua02" path="res://assets/font/Pink White and Purple 8-Bit Gaming Tournament Banner (4).png" id="13_rvig6"]
 [ext_resource type="Theme" uid="uid://i1x2m4kjm1tr" path="res://pause-button.tres" id="14_rvig6"]
+[ext_resource type="Script" uid="uid://twuv10mqwdmh" path="res://settings_menu.gd" id="15_3rtri"]
+[ext_resource type="Texture2D" uid="uid://dxxcn733rxavj" path="res://assets/font/Pink White and Purple 8-Bit Gaming Tournament Banner (6).png" id="16_6p2tb"]
+[ext_resource type="Texture2D" uid="uid://c1oj32y7p0yud" path="res://assets/mouse.png" id="17_b0qpw"]
+[ext_resource type="Texture2D" uid="uid://cfcojdpuwwafy" path="res://assets/keyboard.png" id="18_ochbf"]
+[ext_resource type="Script" uid="uid://b01hsubmuinxg" path="res://check_button.gd" id="19_ochbf"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_pbtym"]
 size = Vector2(24, 190)
@@ -23,6 +28,16 @@ size = Vector2(28, 186)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_q3b50"]
 radius = 16.03122
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_b0qpw"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_b0qpw"]
+bg_color = Color(0.7284821, 0.5484989, 0.5398311, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ochbf"]
+bg_color = Color(0.46395093, 0.6061002, 0.82257104, 1)
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_gt1ru"]
 
 [node name="Node2D" type="Node2D" unique_id=302114256]
 process_mode = 1
@@ -96,17 +111,18 @@ vertical_alignment = 1
 script = ExtResource("10_aihjp")
 
 [node name="pause_menu" type="MarginContainer" parent="." unique_id=464995422]
-process_mode = 2
+process_mode = 3
+visible = false
 offset_right = 1147.0
 offset_bottom = 642.0
 script = ExtResource("12_w00gg")
 
-[node name="Sprite2D" type="Sprite2D" parent="pause_menu" unique_id=183210868]
+[node name="pause_menu_pic" type="Sprite2D" parent="pause_menu" unique_id=183210868]
 position = Vector2(575.5, 324.00003)
 scale = Vector2(0.234, 0.235)
 texture = ExtResource("13_rvig6")
 
-[node name="resume_btn" type="Button" parent="pause_menu/Sprite2D" unique_id=396209107]
+[node name="resume_btn" type="Button" parent="pause_menu/pause_menu_pic" unique_id=396209107]
 offset_left = -574.7863
 offset_top = -468.0852
 offset_right = 572.2137
@@ -117,7 +133,7 @@ theme_override_colors/font_hover_color = Color(0.6666667, 0.8235294, 0.38431373,
 theme_override_colors/icon_pressed_color = Color(0.6666667, 0.8235294, 0.38431373, 1)
 text = "Resume"
 
-[node name="restart_btn" type="Button" parent="pause_menu/Sprite2D" unique_id=1603115720]
+[node name="restart_btn" type="Button" parent="pause_menu/pause_menu_pic" unique_id=1603115720]
 offset_left = -570.51276
 offset_top = -165.95757
 offset_right = 576.48724
@@ -127,7 +143,7 @@ theme_override_colors/font_pressed_color = Color(0.6666667, 0.8235294, 0.3843137
 theme_override_colors/font_hover_color = Color(0.6666667, 0.8235294, 0.38431373, 1)
 text = "Restart"
 
-[node name="settings-btn" type="Button" parent="pause_menu/Sprite2D" unique_id=560495041]
+[node name="settings-btn" type="Button" parent="pause_menu/pause_menu_pic" unique_id=560495041]
 offset_left = -476.49567
 offset_top = 110.63815
 offset_right = 471.50433
@@ -137,7 +153,7 @@ theme_override_colors/font_pressed_color = Color(0.88128006, 0.5664, 0.96, 1)
 theme_override_colors/font_hover_color = Color(0.88235295, 0.5647059, 0.9607843, 1)
 text = "Settings"
 
-[node name="quit_btn" type="Button" parent="pause_menu/Sprite2D" unique_id=540717764]
+[node name="quit_btn" type="Button" parent="pause_menu/pause_menu_pic" unique_id=540717764]
 offset_left = -570.5129
 offset_top = 387.23386
 offset_right = 576.4871
@@ -147,10 +163,55 @@ theme_override_colors/font_pressed_color = Color(0.9411765, 0.11372549, 0.156862
 theme_override_colors/font_hover_color = Color(0.9411765, 0.11372549, 0.15686275, 1)
 text = "Exit"
 
+[node name="settings_menu" type="MarginContainer" parent="." unique_id=1805965609]
+process_mode = 3
+offset_right = 1147.0
+offset_bottom = 642.0
+script = ExtResource("15_3rtri")
+offscreen_x = 1076.92
+metadata/_edit_use_anchors_ = true
+
+[node name="settings_menu_pic" type="Sprite2D" parent="settings_menu" unique_id=1354775473]
+position = Vector2(575.5, 324.00003)
+scale = Vector2(0.234, 0.235)
+texture = ExtResource("16_6p2tb")
+
+[node name="Sprite2D" type="Sprite2D" parent="settings_menu/settings_menu_pic" unique_id=1306222027]
+scale = Vector2(0.7, 0.7)
+texture = SubResource("ViewportTexture_b0qpw")
+
+[node name="MarginContainer" type="MarginContainer" parent="settings_menu/settings_menu_pic/Sprite2D" unique_id=523641696]
+offset_left = -151.70898
+offset_top = -42.553345
+offset_right = 160.29102
+offset_bottom = 165.44666
+
+[node name="CheckButton" type="CheckButton" parent="settings_menu/settings_menu_pic/Sprite2D/MarginContainer" unique_id=1680988278]
+layout_mode = 2
+theme_override_constants/outline_size = 8
+theme_override_icons/checked = ExtResource("17_b0qpw")
+theme_override_icons/unchecked = ExtResource("18_ochbf")
+button_mask = 7
+script = ExtResource("19_ochbf")
+
+[node name="HSlider" type="HSlider" parent="settings_menu/settings_menu_pic/Sprite2D" unique_id=1051047878]
+offset_left = -992.0635
+offset_top = 334.3463
+offset_right = 998.16846
+offset_bottom = 863.2218
+theme_override_constants/center_grabber = 0
+theme_override_styles/slider = SubResource("StyleBoxFlat_b0qpw")
+theme_override_styles/grabber_area = SubResource("StyleBoxFlat_ochbf")
+theme_override_styles/grabber_area_highlight = SubResource("StyleBoxLine_gt1ru")
+rounded = true
+
 [connection signal="score" from="Ball" to="." method="_ball_score"]
 [connection signal="area_entered" from="Ball/Area2D" to="Ball" method="_on_area_2d_area_entered"]
 [connection signal="area_shape_entered" from="Ball/Area2D" to="Ball" method="_on_area_2d_area_shape_entered"]
 [connection signal="body_entered" from="Ball/Area2D" to="Ball" method="_on_area_2d_body_entered"]
-[connection signal="pressed" from="pause_menu/Sprite2D/resume_btn" to="pause_menu" method="_on_resume_btn_pressed"]
-[connection signal="pressed" from="pause_menu/Sprite2D/restart_btn" to="." method="_on_restart_btn_pressed"]
-[connection signal="pressed" from="pause_menu/Sprite2D/quit_btn" to="." method="_on_quit_btn_pressed"]
+[connection signal="pressed" from="pause_menu/pause_menu_pic/resume_btn" to="pause_menu" method="_on_resume_btn_pressed"]
+[connection signal="pressed" from="pause_menu/pause_menu_pic/restart_btn" to="." method="_on_restart_btn_pressed"]
+[connection signal="pressed" from="pause_menu/pause_menu_pic/settings-btn" to="pause_menu" method="_on_settingsbtn_pressed"]
+[connection signal="pressed" from="pause_menu/pause_menu_pic/settings-btn" to="settings_menu" method="_on_settingsbtn_pressed"]
+[connection signal="pressed" from="pause_menu/pause_menu_pic/quit_btn" to="." method="_on_quit_btn_pressed"]
+[connection signal="pressed" from="settings_menu/settings_menu_pic/Sprite2D/MarginContainer/CheckButton" to="settings_menu/settings_menu_pic/Sprite2D/MarginContainer/CheckButton" method="_on_pressed"]
