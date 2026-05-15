@@ -4,6 +4,7 @@ extends Node2D
 @onready var settings_menu: MarginContainer = $settings_menu
 @onready var node_2d: Node2D = $"."
 @onready var button_press_sound_effect: AudioStreamPlayer2D = $sounds/button_press_sound_effect
+@onready var h_slider_2: HSlider = $settings_menu/settings_menu_pic/Sprite2D/HSlider2
 
 var blueScore = 0
 var orangeScore = 0
@@ -12,6 +13,8 @@ var orangeScore = 0
 func _process(delta: float) -> void:
 	pass
 
+func _ready () -> void:
+	h_slider_2.value=AudioServer.get_bus_volume_db(AudioServer.get_bus_index("Master"))
 
 
 func _ball_score(score: int) -> void:
@@ -35,3 +38,11 @@ func _on_quit_btn_pressed() -> void:
 func playButtonSoundEffect() -> void:
 	print("player")
 	button_press_sound_effect.play()
+
+
+func _on_h_slider_2_value_changed(value: float) -> void:
+	print(value)
+	Global.audio= value
+	if value==-28:
+		Global.audio= -100
+	AudioServer.set_bus_volume_db(AudioServer.get_bus_index("Master"), Global.audio)

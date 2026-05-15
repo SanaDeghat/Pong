@@ -12,7 +12,6 @@
 [ext_resource type="Texture2D" uid="uid://c1oj32y7p0yud" path="res://assets/mouse.png" id="9_d12d5"]
 [ext_resource type="Texture2D" uid="uid://cfcojdpuwwafy" path="res://assets/keyboard.png" id="10_mwqcb"]
 [ext_resource type="Script" uid="uid://b01hsubmuinxg" path="res://check_button.gd" id="11_r5ocj"]
-[ext_resource type="Texture2D" uid="uid://f0utvxt0fri5" path="res://icon.svg" id="12_rpx6q"]
 [ext_resource type="AudioStream" uid="uid://b78g8sr6up463" path="res://soundeffects/button.ogg" id="14_d12d5"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_lijk4"]
@@ -54,6 +53,29 @@
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_v6you"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_3bhke"]
+
+[sub_resource type="ImageTexture" id="ImageTexture_kg6nc"]
+
+[sub_resource type="ImageTexture" id="ImageTexture_yeweq"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hqx8f"]
+bg_color = Color(1, 0.79607844, 0.8901961, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_humq1"]
+bg_color = Color(1, 0.79607844, 0.8901961, 1)
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_0totl"]
+color = Color(0, 0, 0, 0)
+thickness = 50
+
+[sub_resource type="Theme" id="Theme_ck0tr"]
+HSlider/icons/grabber = SubResource("ImageTexture_kg6nc")
+HSlider/icons/grabber_disabled = null
+HSlider/icons/grabber_highlight = SubResource("ImageTexture_yeweq")
+HSlider/icons/tick = null
+HSlider/styles/grabber_area = SubResource("StyleBoxFlat_hqx8f")
+HSlider/styles/grabber_area_highlight = SubResource("StyleBoxFlat_humq1")
+HSlider/styles/slider = SubResource("StyleBoxLine_0totl")
 
 [node name="Node2D" type="Node2D" unique_id=114162151]
 script = ExtResource("1_thjnl")
@@ -159,7 +181,6 @@ text = "Exit"
 
 [node name="settings_menu" type="MarginContainer" parent="." unique_id=596484495]
 process_mode = 3
-visible = false
 offset_right = 1147.0
 offset_bottom = 642.0
 script = ExtResource("8_d12d5")
@@ -186,13 +207,6 @@ theme_override_icons/unchecked = ExtResource("10_mwqcb")
 button_mask = 7
 script = ExtResource("11_r5ocj")
 
-[node name="HSlider" type="HSlider" parent="settings_menu/settings_menu_pic/Sprite2D" unique_id=814228916]
-offset_left = -992.0635
-offset_top = 334.3463
-offset_right = 998.16846
-offset_bottom = 863.2218
-theme_override_icons/grabber = ExtResource("12_rpx6q")
-
 [node name="backToPause" type="Button" parent="settings_menu/settings_menu_pic/Sprite2D" unique_id=1471640318]
 offset_left = -1315.6289
 offset_top = -1033.4348
@@ -201,6 +215,16 @@ offset_bottom = -814.58984
 theme_override_styles/normal = SubResource("StyleBoxEmpty_7cfyr")
 theme_override_styles/pressed = SubResource("StyleBoxEmpty_v6you")
 theme_override_styles/hover = SubResource("StyleBoxEmpty_3bhke")
+
+[node name="HSlider2" type="HSlider" parent="settings_menu/settings_menu_pic/Sprite2D" unique_id=658090768]
+offset_left = -1091.2699
+offset_top = 43.955856
+offset_right = 1063.7975
+offset_bottom = 1144.2596
+theme = SubResource("Theme_ck0tr")
+min_value = -28.0
+max_value = 17.0
+value = 17.0
 
 [node name="button_press_sound_effect" type="AudioStreamPlayer2D" parent="." unique_id=1376891874]
 stream = ExtResource("14_d12d5")
@@ -214,3 +238,4 @@ stream = ExtResource("14_d12d5")
 [connection signal="pressed" from="startMenu/background/exit_btn" to="." method="_on_exit_btn_pressed"]
 [connection signal="pressed" from="settings_menu/settings_menu_pic/Sprite2D/MarginContainer/CheckButton" to="settings_menu/settings_menu_pic/Sprite2D/MarginContainer/CheckButton" method="_on_pressed"]
 [connection signal="pressed" from="settings_menu/settings_menu_pic/Sprite2D/backToPause" to="settings_menu" method="_on_button_pressed"]
+[connection signal="value_changed" from="settings_menu/settings_menu_pic/Sprite2D/HSlider2" to="." method="_on_h_slider_2_value_changed"]

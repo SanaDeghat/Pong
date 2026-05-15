@@ -7,7 +7,6 @@
 [ext_resource type="Texture2D" uid="uid://ckx7meyynckc1" path="res://assets/pixil-frame-0 (1).png" id="4_52bgd"]
 [ext_resource type="Script" uid="uid://c5ktme8hejuti" path="res://ball.gd" id="6_btl6j"]
 [ext_resource type="Texture2D" uid="uid://d40d8gm2di4o" path="res://assets/pixil-frame-0 (2).png" id="6_kg6nc"]
-[ext_resource type="Texture2D" uid="uid://yvr31h8u2yoa" path="res://assets/Ball.png" id="6_pbtym"]
 [ext_resource type="Texture2D" uid="uid://sfklsferuexu" path="res://assets/pixil-frame-0 (4).png" id="8_yeweq"]
 [ext_resource type="Script" uid="uid://cg7lrdcql5mn5" path="res://ScoreBoard.gd" id="9_anrpf"]
 [ext_resource type="FontFile" uid="uid://bwy6rhh6dafv2" path="res://assets/font/Minecraft.ttf" id="9_vws38"]
@@ -20,6 +19,7 @@
 [ext_resource type="Texture2D" uid="uid://c1oj32y7p0yud" path="res://assets/mouse.png" id="17_b0qpw"]
 [ext_resource type="Texture2D" uid="uid://cfcojdpuwwafy" path="res://assets/keyboard.png" id="18_ochbf"]
 [ext_resource type="Script" uid="uid://b01hsubmuinxg" path="res://check_button.gd" id="19_ochbf"]
+[ext_resource type="AudioStream" uid="uid://cayg56fvvy476" path="res://soundeffects/win.ogg" id="20_52bgd"]
 [ext_resource type="AudioStream" uid="uid://b78g8sr6up463" path="res://soundeffects/button.ogg" id="20_gt1ru"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_hqx8f"]
@@ -33,9 +33,8 @@ _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.9771196, 0.31509173), 0.0, 0.0
 point_count = 2
 
 [sub_resource type="Gradient" id="Gradient_52bgd"]
-interpolation_mode = 2
-offsets = PackedFloat32Array(0, 0.2946299, 0.68214804, 1)
-colors = PackedColorArray(0.92198336, 0.94, 0.7238, 1, 0.8536, 0.97, 0.96224004, 1, 0.98769003, 0.8514, 0.99, 1, 1, 1, 1, 1)
+offsets = PackedFloat32Array(0, 0.36918604, 0.6744186, 0.9375)
+colors = PackedColorArray(1, 1, 1, 1, 0.99, 0.8019, 0.97746, 1, 0.6435, 0.83984995, 0.99, 1, 0.97, 0.9415467, 0.7566, 1)
 
 [sub_resource type="Curve" id="Curve_kg6nc"]
 _limits = [-1.0, 1.0, 0.0, 1.0]
@@ -53,19 +52,34 @@ colors = PackedColorArray(0.9951183, 0.5607581, 0.74409515, 1, 0.9997661, 0.9369
 [sub_resource type="CircleShape2D" id="CircleShape2D_q3b50"]
 radius = 16.03122
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_b0qpw"]
-bg_color = Color(0.7284821, 0.5484989, 0.5398311, 1)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ochbf"]
-bg_color = Color(0.46395093, 0.6061002, 0.82257104, 1)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gt1ru"]
-
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ochbf"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_gt1ru"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_52bgd"]
+
+[sub_resource type="ImageTexture" id="ImageTexture_52bgd"]
+
+[sub_resource type="ImageTexture" id="ImageTexture_kg6nc"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yeweq"]
+bg_color = Color(1, 0.79607844, 0.8901961, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hqx8f"]
+bg_color = Color(1, 0.79607844, 0.8901961, 1)
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_humq1"]
+color = Color(0, 0, 0, 0)
+thickness = 50
+
+[sub_resource type="Theme" id="Theme_ulgcx"]
+HSlider/icons/grabber = SubResource("ImageTexture_52bgd")
+HSlider/icons/grabber_disabled = null
+HSlider/icons/grabber_highlight = SubResource("ImageTexture_kg6nc")
+HSlider/icons/tick = null
+HSlider/styles/grabber_area = SubResource("StyleBoxFlat_yeweq")
+HSlider/styles/grabber_area_highlight = SubResource("StyleBoxFlat_hqx8f")
+HSlider/styles/slider = SubResource("StyleBoxLine_humq1")
 
 [node name="Node2D" type="Node2D" unique_id=302114256]
 process_mode = 1
@@ -235,7 +249,6 @@ text = "Exit"
 
 [node name="settings_menu" type="MarginContainer" parent="." unique_id=1805965609]
 process_mode = 3
-visible = false
 offset_right = 1147.0
 offset_bottom = 642.0
 script = ExtResource("15_3rtri")
@@ -263,18 +276,6 @@ theme_override_icons/unchecked = ExtResource("18_ochbf")
 button_mask = 7
 script = ExtResource("19_ochbf")
 
-[node name="HSlider" type="HSlider" parent="settings_menu/settings_menu_pic/Sprite2D" unique_id=1051047878]
-offset_left = -992.0635
-offset_top = 334.3463
-offset_right = 998.16846
-offset_bottom = 863.2218
-theme_override_constants/center_grabber = 0
-theme_override_icons/grabber = ExtResource("6_pbtym")
-theme_override_styles/slider = SubResource("StyleBoxFlat_b0qpw")
-theme_override_styles/grabber_area = SubResource("StyleBoxFlat_ochbf")
-theme_override_styles/grabber_area_highlight = SubResource("StyleBoxFlat_gt1ru")
-rounded = true
-
 [node name="backToPause" type="Button" parent="settings_menu/settings_menu_pic/Sprite2D" unique_id=1020209267]
 offset_left = -1315.6289
 offset_top = -1033.4348
@@ -284,11 +285,23 @@ theme_override_styles/normal = SubResource("StyleBoxEmpty_ochbf")
 theme_override_styles/pressed = SubResource("StyleBoxEmpty_gt1ru")
 theme_override_styles/hover = SubResource("StyleBoxEmpty_52bgd")
 
+[node name="HSlider2" type="HSlider" parent="settings_menu/settings_menu_pic/Sprite2D" unique_id=1474613999]
+offset_left = -1065.3235
+offset_top = 48.632034
+offset_right = 1089.7439
+offset_bottom = 1148.9359
+theme = SubResource("Theme_ulgcx")
+min_value = -28.0
+max_value = 17.0
+value = 16.0
+
 [node name="sounds" type="Node2D" parent="." unique_id=152743888]
 process_mode = 3
 
 [node name="backgroundMusic" type="AudioStreamPlayer2D" parent="sounds" unique_id=980652781]
+stream = ExtResource("20_52bgd")
 autoplay = true
+parameters/looping = true
 
 [node name="button_press_sound_effect" type="AudioStreamPlayer2D" parent="sounds" unique_id=993334771]
 stream = ExtResource("20_gt1ru")
@@ -305,3 +318,4 @@ stream = ExtResource("20_gt1ru")
 [connection signal="pressed" from="settings_menu/settings_menu_pic/Sprite2D/MarginContainer/CheckButton" to="settings_menu" method="_on_check_button_pressed"]
 [connection signal="pressed" from="settings_menu/settings_menu_pic/Sprite2D/MarginContainer/CheckButton" to="settings_menu/settings_menu_pic/Sprite2D/MarginContainer/CheckButton" method="_on_pressed"]
 [connection signal="pressed" from="settings_menu/settings_menu_pic/Sprite2D/backToPause" to="settings_menu" method="_on_button_pressed"]
+[connection signal="value_changed" from="settings_menu/settings_menu_pic/Sprite2D/HSlider2" to="." method="_on_h_slider_2_value_changed"]
