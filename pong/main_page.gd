@@ -22,7 +22,6 @@ func _ball_score(score: int) -> void:
 
 func _on_restart_btn_pressed() -> void:
 	playButtonSoundEffect()
-
 	pause_menu.visible = false
 	get_tree().paused = false
 	get_tree().change_scene_to_file("res://main_page.tscn")
@@ -33,6 +32,6 @@ func _on_quit_btn_pressed() -> void:
 	get_tree().paused = false
 	get_tree().change_scene_to_file("res://starter_menu.tscn")
 
-
 func playButtonSoundEffect() -> void:
-	button_press_sound_effect.playing=true
+	print("player")
+	button_press_sound_effect.play()

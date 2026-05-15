@@ -1,6 +1,7 @@
 extends MarginContainer
 @export var offscreen_x: float = -2160.0
 @export var animation_duration: float = 0.4
+@onready var button_press_sound_effect: AudioStreamPlayer2D = $"../button_press_sound_effect"
 
 func _ready() -> void:
 	pass # Replace with function body.
@@ -11,6 +12,7 @@ func _process(delta: float) -> void:
 	pass
 
 func _on_settingsbtn_pressed() -> void:
+	button_press_sound_effect.play()
 	hide_menu_hor()
 	
 	

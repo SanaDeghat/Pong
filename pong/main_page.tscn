@@ -3,11 +3,12 @@
 [ext_resource type="Texture2D" uid="uid://ccvu66v50xu03" path="res://assets/Board.png" id="1_75dro"]
 [ext_resource type="Script" uid="uid://cmj1f40mksnwd" path="res://character_body_2d.gd" id="1_j0gr7"]
 [ext_resource type="Script" uid="uid://bot8snj86pwlo" path="res://main_page.gd" id="1_q3b50"]
-[ext_resource type="Texture2D" uid="uid://b2asn8stkjhnw" path="res://assets/Player.png" id="2_5mpow"]
-[ext_resource type="Texture2D" uid="uid://bwx67w3sbgm8i" path="res://assets/Computer.png" id="2_q3btt"]
 [ext_resource type="Script" uid="uid://di5ppvip4tqe4" path="res://character_body_2d_2.gd" id="3_5mpow"]
+[ext_resource type="Texture2D" uid="uid://ckx7meyynckc1" path="res://assets/pixil-frame-0 (1).png" id="4_52bgd"]
 [ext_resource type="Script" uid="uid://c5ktme8hejuti" path="res://ball.gd" id="6_btl6j"]
+[ext_resource type="Texture2D" uid="uid://d40d8gm2di4o" path="res://assets/pixil-frame-0 (2).png" id="6_kg6nc"]
 [ext_resource type="Texture2D" uid="uid://yvr31h8u2yoa" path="res://assets/Ball.png" id="6_pbtym"]
+[ext_resource type="Texture2D" uid="uid://sfklsferuexu" path="res://assets/pixil-frame-0 (4).png" id="8_yeweq"]
 [ext_resource type="Script" uid="uid://cg7lrdcql5mn5" path="res://ScoreBoard.gd" id="9_anrpf"]
 [ext_resource type="FontFile" uid="uid://bwy6rhh6dafv2" path="res://assets/font/Minecraft.ttf" id="9_vws38"]
 [ext_resource type="Script" uid="uid://cb2s1g5hv38wl" path="res://orange_score.gd" id="10_aihjp"]
@@ -21,11 +22,11 @@
 [ext_resource type="Script" uid="uid://b01hsubmuinxg" path="res://check_button.gd" id="19_ochbf"]
 [ext_resource type="AudioStream" uid="uid://b78g8sr6up463" path="res://soundeffects/button.ogg" id="20_gt1ru"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_pbtym"]
-size = Vector2(24, 190)
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_hqx8f"]
+height = 182.0
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_75dro"]
-size = Vector2(28, 186)
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_humq1"]
+height = 188.0
 
 [sub_resource type="Curve" id="Curve_gt1ru"]
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.9771196, 0.31509173), 0.0, 0.0, 0, 0]
@@ -80,25 +81,27 @@ texture = ExtResource("1_75dro")
 script = ExtResource("3_5mpow")
 
 [node name="Sprite2D" type="Sprite2D" parent="blueBoard" unique_id=1373750807]
-position = Vector2(16, 326.00003)
-scale = Vector2(1.55, 1.55)
-texture = ExtResource("2_q3btt")
+texture_filter = 1
+position = Vector2(23, 325.00003)
+scale = Vector2(20.49, 20.49)
+texture = ExtResource("4_52bgd")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="blueBoard" unique_id=479523137]
-position = Vector2(15, 328)
-shape = SubResource("RectangleShape2D_pbtym")
+position = Vector2(33, 326)
+shape = SubResource("CapsuleShape2D_hqx8f")
 
 [node name="orangeBoard" type="CharacterBody2D" parent="." unique_id=1375709547]
 script = ExtResource("1_j0gr7")
 
 [node name="Sprite2D" type="Sprite2D" parent="orangeBoard" unique_id=459063881]
-position = Vector2(1136, 326)
-scale = Vector2(1.55, 1.55)
-texture = ExtResource("2_5mpow")
+texture_filter = 1
+position = Vector2(1129, 326.00003)
+scale = Vector2(20.49, 20.49)
+texture = ExtResource("6_kg6nc")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="orangeBoard" unique_id=2123445351]
-position = Vector2(1135, 326)
-shape = SubResource("RectangleShape2D_75dro")
+position = Vector2(1118.5, 326)
+shape = SubResource("CapsuleShape2D_humq1")
 
 [node name="Ball" type="CharacterBody2D" parent="." unique_id=193951003]
 script = ExtResource("6_btl6j")
@@ -118,10 +121,6 @@ scale_amount_max = 2.0
 scale_amount_curve = SubResource("Curve_gt1ru")
 color_ramp = SubResource("Gradient_52bgd")
 hue_variation_curve = SubResource("Curve_kg6nc")
-
-[node name="Sprite2D" type="Sprite2D" parent="Ball" unique_id=47610442]
-position = Vector2(63, 326)
-texture = ExtResource("6_pbtym")
 
 [node name="impact_particle" type="CPUParticles2D" parent="Ball" unique_id=1413293219]
 position = Vector2(63, 326)
@@ -145,6 +144,11 @@ scale_curve_y = null
 color_ramp = SubResource("Gradient_ochbf")
 hue_variation_min = 0.1
 hue_variation_max = 1.0
+
+[node name="Sprite2D" type="Sprite2D" parent="Ball/impact_particle" unique_id=47610442]
+texture_filter = 1
+scale = Vector2(6.42, 6.42)
+texture = ExtResource("8_yeweq")
 
 [node name="Area2D" type="Area2D" parent="Ball" unique_id=934225098]
 
@@ -231,6 +235,7 @@ text = "Exit"
 
 [node name="settings_menu" type="MarginContainer" parent="." unique_id=1805965609]
 process_mode = 3
+visible = false
 offset_right = 1147.0
 offset_bottom = 642.0
 script = ExtResource("15_3rtri")
@@ -280,6 +285,7 @@ theme_override_styles/pressed = SubResource("StyleBoxEmpty_gt1ru")
 theme_override_styles/hover = SubResource("StyleBoxEmpty_52bgd")
 
 [node name="sounds" type="Node2D" parent="." unique_id=152743888]
+process_mode = 3
 
 [node name="backgroundMusic" type="AudioStreamPlayer2D" parent="sounds" unique_id=980652781]
 autoplay = true
@@ -296,5 +302,6 @@ stream = ExtResource("20_gt1ru")
 [connection signal="pressed" from="pause_menu/pause_menu_pic/settings-btn" to="pause_menu" method="_on_settingsbtn_pressed"]
 [connection signal="pressed" from="pause_menu/pause_menu_pic/settings-btn" to="settings_menu" method="_on_settingsbtn_pressed"]
 [connection signal="pressed" from="pause_menu/pause_menu_pic/quit_btn" to="." method="_on_quit_btn_pressed"]
+[connection signal="pressed" from="settings_menu/settings_menu_pic/Sprite2D/MarginContainer/CheckButton" to="settings_menu" method="_on_check_button_pressed"]
 [connection signal="pressed" from="settings_menu/settings_menu_pic/Sprite2D/MarginContainer/CheckButton" to="settings_menu/settings_menu_pic/Sprite2D/MarginContainer/CheckButton" method="_on_pressed"]
 [connection signal="pressed" from="settings_menu/settings_menu_pic/Sprite2D/backToPause" to="settings_menu" method="_on_button_pressed"]

@@ -13,6 +13,7 @@
 [ext_resource type="Texture2D" uid="uid://cfcojdpuwwafy" path="res://assets/keyboard.png" id="10_mwqcb"]
 [ext_resource type="Script" uid="uid://b01hsubmuinxg" path="res://check_button.gd" id="11_r5ocj"]
 [ext_resource type="Texture2D" uid="uid://f0utvxt0fri5" path="res://icon.svg" id="12_rpx6q"]
+[ext_resource type="AudioStream" uid="uid://b78g8sr6up463" path="res://soundeffects/button.ogg" id="14_d12d5"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_lijk4"]
 
@@ -201,12 +202,15 @@ theme_override_styles/normal = SubResource("StyleBoxEmpty_7cfyr")
 theme_override_styles/pressed = SubResource("StyleBoxEmpty_v6you")
 theme_override_styles/hover = SubResource("StyleBoxEmpty_3bhke")
 
+[node name="button_press_sound_effect" type="AudioStreamPlayer2D" parent="." unique_id=1376891874]
+stream = ExtResource("14_d12d5")
+
 [connection signal="choosePlayerAmount" from="." to="startMenu/background/onePlayer" method="_on_node_2d_choose_player_amount"]
 [connection signal="choosePlayerAmount" from="." to="startMenu/background/twoPlayer" method="_on_node_2d_choose_player_amount"]
 [connection signal="pressed" from="startMenu/background/onePlayer" to="." method="_on_one_player_pressed"]
 [connection signal="pressed" from="startMenu/background/twoPlayer" to="." method="_on_two_player_pressed"]
-[connection signal="pressed" from="startMenu/background/settings_btn" to="settings_menu" method="_on_settingsbtn_pressed"]
 [connection signal="pressed" from="startMenu/background/settings_btn" to="startMenu" method="_on_settingsbtn_pressed"]
+[connection signal="pressed" from="startMenu/background/settings_btn" to="settings_menu" method="_on_settingsbtn_pressed"]
 [connection signal="pressed" from="startMenu/background/exit_btn" to="." method="_on_exit_btn_pressed"]
 [connection signal="pressed" from="settings_menu/settings_menu_pic/Sprite2D/MarginContainer/CheckButton" to="settings_menu/settings_menu_pic/Sprite2D/MarginContainer/CheckButton" method="_on_pressed"]
 [connection signal="pressed" from="settings_menu/settings_menu_pic/Sprite2D/backToPause" to="settings_menu" method="_on_button_pressed"]

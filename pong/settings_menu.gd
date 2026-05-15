@@ -31,3 +31,7 @@ func _on_button_pressed() -> void:
 	get_parent().playButtonSoundEffect()
 	hide_menu_hor()
 	pause_menu.show_menu_hor()
+
+
+func _on_check_button_pressed() -> void:
+	get_parent().playButtonSoundEffect();

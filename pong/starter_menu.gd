@@ -1,4 +1,5 @@
 extends Node2D
+@onready var button_press_sound_effect: AudioStreamPlayer2D = $button_press_sound_effect
 
 signal choosePlayerAmount()
 # Called when the node enters the scene tree for the first time.
