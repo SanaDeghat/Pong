@@ -14,6 +14,8 @@
 [ext_resource type="Script" uid="uid://b01hsubmuinxg" path="res://check_button.gd" id="11_r5ocj"]
 [ext_resource type="AudioStream" uid="uid://b78g8sr6up463" path="res://soundeffects/button.ogg" id="14_d12d5"]
 [ext_resource type="AudioStream" uid="uid://cpknkdebke3nw" path="res://soundeffects/djartmusic-so-happy-with-my-8-bit-game-301275.mp3" id="14_mwqcb"]
+[ext_resource type="Texture2D" uid="uid://dnd0xqbq7ui14" path="res://assets/pixilart-drawing.png" id="15_r5ocj"]
+[ext_resource type="Script" uid="uid://bqd8f23kir5vh" path="res://curtin.gd" id="16_rpx6q"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_lijk4"]
 
@@ -247,6 +249,13 @@ stream = ExtResource("14_mwqcb")
 volume_db = -17.596
 autoplay = true
 parameters/looping = true
+
+[node name="PixilartDrawing" type="Sprite2D" parent="." unique_id=1036511082]
+texture_filter = 1
+position = Vector2(576, -582.99994)
+scale = Vector2(38.333336, 38.674095)
+texture = ExtResource("15_r5ocj")
+script = ExtResource("16_rpx6q")
 
 [connection signal="choosePlayerAmount" from="." to="startMenu/background/onePlayer" method="_on_node_2d_choose_player_amount"]
 [connection signal="choosePlayerAmount" from="." to="startMenu/background/twoPlayer" method="_on_node_2d_choose_player_amount"]

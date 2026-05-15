@@ -23,6 +23,8 @@
 [ext_resource type="Script" uid="uid://b01hsubmuinxg" path="res://check_button.gd" id="19_ochbf"]
 [ext_resource type="AudioStream" uid="uid://c8iqfj2jyeh0h" path="res://soundeffects/the_mountain-8-bit-retro-522443.mp3" id="20_52bgd"]
 [ext_resource type="AudioStream" uid="uid://b78g8sr6up463" path="res://soundeffects/button.ogg" id="20_gt1ru"]
+[ext_resource type="Texture2D" uid="uid://dnd0xqbq7ui14" path="res://assets/pixilart-drawing.png" id="24_humq1"]
+[ext_resource type="Script" uid="uid://bqd8f23kir5vh" path="res://curtin.gd" id="25_0totl"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_hqx8f"]
 height = 182.0
@@ -331,6 +333,13 @@ parameters/looping = true
 
 [node name="button_press_sound_effect" type="AudioStreamPlayer2D" parent="sounds" unique_id=993334771]
 stream = ExtResource("20_gt1ru")
+
+[node name="PixilartDrawing" type="Sprite2D" parent="." unique_id=1187838844]
+texture_filter = 1
+position = Vector2(562, 157)
+scale = Vector2(38.366665, 38.366665)
+texture = ExtResource("24_humq1")
+script = ExtResource("25_0totl")
 
 [connection signal="score" from="Ball" to="." method="_ball_score"]
 [connection signal="area_entered" from="Ball/Area2D" to="Ball" method="_on_area_2d_area_entered"]
