@@ -40,9 +40,11 @@ func _on_hide_animation_finished() -> void:
 	get_tree().paused = false
 
 func _on_resume_btn_pressed() -> void:
+	get_parent().playButtonSoundEffect()
 	hide_menu()
 
 func _on_settingsbtn_pressed() -> void:
+	get_parent().playButtonSoundEffect()
 	hide_menu_hor()
 func _input(event):
 	if Input.is_action_just_pressed("pause_action"):

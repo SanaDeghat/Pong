@@ -1,0 +1,294 @@
+[gd_scene format=3 uid="uid://m76mxnietku0"]
+
+[ext_resource type="Texture2D" uid="uid://ccvu66v50xu03" path="res://assets/Board.png" id="1_75dro"]
+[ext_resource type="Script" uid="uid://cmj1f40mksnwd" path="res://character_body_2d.gd" id="1_j0gr7"]
+[ext_resource type="Script" uid="uid://bot8snj86pwlo" path="res://main_page.gd" id="1_q3b50"]
+[ext_resource type="Texture2D" uid="uid://b2asn8stkjhnw" path="res://assets/Player.png" id="2_5mpow"]
+[ext_resource type="Texture2D" uid="uid://bwx67w3sbgm8i" path="res://assets/Computer.png" id="2_q3btt"]
+[ext_resource type="Script" uid="uid://di5ppvip4tqe4" path="res://character_body_2d_2.gd" id="3_5mpow"]
+[ext_resource type="Script" uid="uid://c5ktme8hejuti" path="res://ball.gd" id="6_btl6j"]
+[ext_resource type="Texture2D" uid="uid://yvr31h8u2yoa" path="res://assets/Ball.png" id="6_pbtym"]
+[ext_resource type="Script" uid="uid://cg7lrdcql5mn5" path="res://ScoreBoard.gd" id="9_anrpf"]
+[ext_resource type="FontFile" uid="uid://bwy6rhh6dafv2" path="res://assets/font/Minecraft.ttf" id="9_vws38"]
+[ext_resource type="Script" uid="uid://cb2s1g5hv38wl" path="res://orange_score.gd" id="10_aihjp"]
+[ext_resource type="Script" uid="uid://cw7g1af1onm6l" path="res://pause_menu.gd" id="12_w00gg"]
+[ext_resource type="Texture2D" uid="uid://ncxhedbbua02" path="res://assets/font/Pink White and Purple 8-Bit Gaming Tournament Banner (4).png" id="13_rvig6"]
+[ext_resource type="Theme" uid="uid://i1x2m4kjm1tr" path="res://pause-button.tres" id="14_rvig6"]
+[ext_resource type="Script" uid="uid://twuv10mqwdmh" path="res://settings_menu.gd" id="15_3rtri"]
+[ext_resource type="Texture2D" uid="uid://dxxcn733rxavj" path="res://assets/font/Pink White and Purple 8-Bit Gaming Tournament Banner (6).png" id="16_6p2tb"]
+[ext_resource type="Texture2D" uid="uid://c1oj32y7p0yud" path="res://assets/mouse.png" id="17_b0qpw"]
+[ext_resource type="Texture2D" uid="uid://cfcojdpuwwafy" path="res://assets/keyboard.png" id="18_ochbf"]
+[ext_resource type="Script" uid="uid://b01hsubmuinxg" path="res://check_button.gd" id="19_ochbf"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_pbtym"]
+size = Vector2(24, 190)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_75dro"]
+size = Vector2(28, 186)
+
+[sub_resource type="Curve" id="Curve_gt1ru"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.9771196, 0.31509173), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Gradient" id="Gradient_52bgd"]
+interpolation_mode = 2
+offsets = PackedFloat32Array(0, 0.2946299, 0.68214804, 1)
+colors = PackedColorArray(0.92198336, 0.94, 0.7238, 1, 0.8536, 0.97, 0.96224004, 1, 0.98769003, 0.8514, 0.99, 1, 1, 1, 1, 1)
+
+[sub_resource type="Curve" id="Curve_kg6nc"]
+_limits = [-1.0, 1.0, 0.0, 1.0]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, -0.21368682), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Curve" id="Curve_ochbf"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.96851856, 0.119092345), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Gradient" id="Gradient_ochbf"]
+offsets = PackedFloat32Array(0.010288066, 0.46502057, 0.82510287)
+colors = PackedColorArray(0.9951183, 0.5607581, 0.74409515, 1, 0.9997661, 0.93690264, 0.48313376, 1, 0.65999997, 0.966, 1, 1)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_q3b50"]
+radius = 16.03122
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_b0qpw"]
+bg_color = Color(0.7284821, 0.5484989, 0.5398311, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ochbf"]
+bg_color = Color(0.46395093, 0.6061002, 0.82257104, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gt1ru"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ochbf"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_gt1ru"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_52bgd"]
+
+[node name="Node2D" type="Node2D" unique_id=302114256]
+process_mode = 1
+script = ExtResource("1_q3b50")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=2033655986]
+texture_filter = 2
+position = Vector2(576, 324)
+scale = Vector2(1.4364089, 1.4241759)
+texture = ExtResource("1_75dro")
+
+[node name="blueBoard" type="CharacterBody2D" parent="." unique_id=1567562501]
+script = ExtResource("3_5mpow")
+
+[node name="Sprite2D" type="Sprite2D" parent="blueBoard" unique_id=1373750807]
+position = Vector2(16, 326.00003)
+scale = Vector2(1.55, 1.55)
+texture = ExtResource("2_q3btt")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="blueBoard" unique_id=479523137]
+position = Vector2(15, 328)
+shape = SubResource("RectangleShape2D_pbtym")
+
+[node name="orangeBoard" type="CharacterBody2D" parent="." unique_id=1375709547]
+script = ExtResource("1_j0gr7")
+
+[node name="Sprite2D" type="Sprite2D" parent="orangeBoard" unique_id=459063881]
+position = Vector2(1136, 326)
+scale = Vector2(1.55, 1.55)
+texture = ExtResource("2_5mpow")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="orangeBoard" unique_id=2123445351]
+position = Vector2(1135, 326)
+shape = SubResource("RectangleShape2D_75dro")
+
+[node name="Ball" type="CharacterBody2D" parent="." unique_id=193951003]
+script = ExtResource("6_btl6j")
+
+[node name="tail_particle" type="CPUParticles2D" parent="Ball" unique_id=1742069616]
+position = Vector2(63, 326)
+amount = 700
+lifetime = 0.2
+emission_shape = 1
+emission_sphere_radius = 11.95
+direction = Vector2(3, 0)
+gravity = Vector2(0, 0)
+radial_accel_min = -100.0
+radial_accel_max = -90.0
+scale_amount_min = 0.5
+scale_amount_max = 2.0
+scale_amount_curve = SubResource("Curve_gt1ru")
+color_ramp = SubResource("Gradient_52bgd")
+hue_variation_curve = SubResource("Curve_kg6nc")
+
+[node name="Sprite2D" type="Sprite2D" parent="Ball" unique_id=47610442]
+position = Vector2(63, 326)
+texture = ExtResource("6_pbtym")
+
+[node name="impact_particle" type="CPUParticles2D" parent="Ball" unique_id=1413293219]
+position = Vector2(63, 326)
+emitting = false
+amount = 50
+lifetime = 1.6
+one_shot = true
+explosiveness = 1.0
+lifetime_randomness = 1.0
+direction = Vector2(-1, 0)
+spread = 60.0
+gravity = Vector2(0, 150)
+initial_velocity_min = 50.0
+initial_velocity_max = 200.0
+scale_amount_min = 4.0
+scale_amount_max = 8.0
+scale_amount_curve = SubResource("Curve_ochbf")
+split_scale = true
+scale_curve_x = null
+scale_curve_y = null
+color_ramp = SubResource("Gradient_ochbf")
+hue_variation_min = 0.1
+hue_variation_max = 1.0
+
+[node name="Area2D" type="Area2D" parent="Ball" unique_id=934225098]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ball/Area2D" unique_id=1571522813]
+position = Vector2(63, 326)
+shape = SubResource("CircleShape2D_q3b50")
+
+[node name="blue_score" type="Label" parent="." unique_id=789994006]
+offset_left = 433.0
+offset_top = 1.0
+offset_right = 577.0
+offset_bottom = 76.0
+theme_override_fonts/font = ExtResource("9_vws38")
+theme_override_font_sizes/font_size = 50
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("9_anrpf")
+
+[node name="orange_score" type="Label" parent="." unique_id=1956572431]
+offset_left = 578.0
+offset_top = 2.0
+offset_right = 720.0
+offset_bottom = 77.0
+theme_override_fonts/font = ExtResource("9_vws38")
+theme_override_font_sizes/font_size = 50
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("10_aihjp")
+
+[node name="pause_menu" type="MarginContainer" parent="." unique_id=464995422]
+process_mode = 3
+visible = false
+offset_right = 1147.0
+offset_bottom = 642.0
+script = ExtResource("12_w00gg")
+
+[node name="pause_menu_pic" type="Sprite2D" parent="pause_menu" unique_id=183210868]
+position = Vector2(575.5, 324.00003)
+scale = Vector2(0.234, 0.235)
+texture = ExtResource("13_rvig6")
+
+[node name="resume_btn" type="Button" parent="pause_menu/pause_menu_pic" unique_id=396209107]
+offset_left = -574.7863
+offset_top = -468.0852
+offset_right = 572.2137
+offset_bottom = -234.0852
+theme = ExtResource("14_rvig6")
+theme_override_colors/font_pressed_color = Color(0.6666667, 0.8235294, 0.38431373, 1)
+theme_override_colors/font_hover_color = Color(0.6666667, 0.8235294, 0.38431373, 1)
+theme_override_colors/icon_pressed_color = Color(0.6666667, 0.8235294, 0.38431373, 1)
+text = "Resume"
+
+[node name="restart_btn" type="Button" parent="pause_menu/pause_menu_pic" unique_id=1603115720]
+offset_left = -570.51276
+offset_top = -165.95757
+offset_right = 576.48724
+offset_bottom = 27.042435
+theme = ExtResource("14_rvig6")
+theme_override_colors/font_pressed_color = Color(0.6666667, 0.8235294, 0.38431373, 1)
+theme_override_colors/font_hover_color = Color(0.6666667, 0.8235294, 0.38431373, 1)
+text = "Restart"
+
+[node name="settings-btn" type="Button" parent="pause_menu/pause_menu_pic" unique_id=560495041]
+offset_left = -476.49567
+offset_top = 110.63815
+offset_right = 471.50433
+offset_bottom = 303.63815
+theme = ExtResource("14_rvig6")
+theme_override_colors/font_pressed_color = Color(0.88128006, 0.5664, 0.96, 1)
+theme_override_colors/font_hover_color = Color(0.88235295, 0.5647059, 0.9607843, 1)
+text = "Settings"
+
+[node name="quit_btn" type="Button" parent="pause_menu/pause_menu_pic" unique_id=540717764]
+offset_left = -570.5129
+offset_top = 387.23386
+offset_right = 576.4871
+offset_bottom = 580.2339
+theme = ExtResource("14_rvig6")
+theme_override_colors/font_pressed_color = Color(0.9411765, 0.11372549, 0.15686275, 1)
+theme_override_colors/font_hover_color = Color(0.9411765, 0.11372549, 0.15686275, 1)
+text = "Exit"
+
+[node name="settings_menu" type="MarginContainer" parent="." unique_id=1805965609]
+process_mode = 3
+offset_right = 1147.0
+offset_bottom = 642.0
+script = ExtResource("15_3rtri")
+metadata/_edit_use_anchors_ = true
+
+[node name="settings_menu_pic" type="Sprite2D" parent="settings_menu" unique_id=1354775473]
+position = Vector2(575.5, 324.00003)
+scale = Vector2(0.234, 0.235)
+texture = ExtResource("16_6p2tb")
+
+[node name="Sprite2D" type="Sprite2D" parent="settings_menu/settings_menu_pic" unique_id=1306222027]
+scale = Vector2(0.7, 0.7)
+
+[node name="MarginContainer" type="MarginContainer" parent="settings_menu/settings_menu_pic/Sprite2D" unique_id=523641696]
+offset_left = -151.70898
+offset_top = -42.553345
+offset_right = 160.29102
+offset_bottom = 165.44666
+
+[node name="CheckButton" type="CheckButton" parent="settings_menu/settings_menu_pic/Sprite2D/MarginContainer" unique_id=1680988278]
+layout_mode = 2
+theme_override_constants/outline_size = 8
+theme_override_icons/checked = ExtResource("17_b0qpw")
+theme_override_icons/unchecked = ExtResource("18_ochbf")
+button_mask = 7
+script = ExtResource("19_ochbf")
+
+[node name="HSlider" type="HSlider" parent="settings_menu/settings_menu_pic/Sprite2D" unique_id=1051047878]
+offset_left = -992.0635
+offset_top = 334.3463
+offset_right = 998.16846
+offset_bottom = 863.2218
+theme_override_constants/center_grabber = 0
+theme_override_icons/grabber = ExtResource("6_pbtym")
+theme_override_styles/slider = SubResource("StyleBoxFlat_b0qpw")
+theme_override_styles/grabber_area = SubResource("StyleBoxFlat_ochbf")
+theme_override_styles/grabber_area_highlight = SubResource("StyleBoxFlat_gt1ru")
+rounded = true
+
+[node name="backToPause" type="Button" parent="settings_menu/settings_menu_pic/Sprite2D" unique_id=1020209267]
+offset_left = -1315.6289
+offset_top = -1033.4348
+offset_right = -760.07324
+offset_bottom = -814.58984
+theme_override_styles/normal = SubResource("StyleBoxEmpty_ochbf")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_gt1ru")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_52bgd")
+
+[node name="backgroundMusic" type="AudioStreamPlayer2D" parent="." unique_id=980652781]
+autoplay = true
+
+[connection signal="score" from="Ball" to="." method="_ball_score"]
+[connection signal="area_entered" from="Ball/Area2D" to="Ball" method="_on_area_2d_area_entered"]
+[connection signal="area_shape_entered" from="Ball/Area2D" to="Ball" method="_on_area_2d_area_shape_entered"]
+[connection signal="body_entered" from="Ball/Area2D" to="Ball" method="_on_area_2d_body_entered"]
+[connection signal="pressed" from="pause_menu/pause_menu_pic/resume_btn" to="pause_menu" method="_on_resume_btn_pressed"]
+[connection signal="pressed" from="pause_menu/pause_menu_pic/restart_btn" to="." method="_on_restart_btn_pressed"]
+[connection signal="pressed" from="pause_menu/pause_menu_pic/settings-btn" to="pause_menu" method="_on_settingsbtn_pressed"]
+[connection signal="pressed" from="pause_menu/pause_menu_pic/settings-btn" to="settings_menu" method="_on_settingsbtn_pressed"]
+[connection signal="pressed" from="pause_menu/pause_menu_pic/quit_btn" to="." method="_on_quit_btn_pressed"]
+[connection signal="pressed" from="settings_menu/settings_menu_pic/Sprite2D/MarginContainer/CheckButton" to="settings_menu/settings_menu_pic/Sprite2D/MarginContainer/CheckButton" method="_on_pressed"]
+[connection signal="pressed" from="settings_menu/settings_menu_pic/Sprite2D/backToPause" to="settings_menu" method="_on_button_pressed"]

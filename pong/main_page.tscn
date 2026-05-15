@@ -19,12 +19,27 @@
 [ext_resource type="Texture2D" uid="uid://c1oj32y7p0yud" path="res://assets/mouse.png" id="17_b0qpw"]
 [ext_resource type="Texture2D" uid="uid://cfcojdpuwwafy" path="res://assets/keyboard.png" id="18_ochbf"]
 [ext_resource type="Script" uid="uid://b01hsubmuinxg" path="res://check_button.gd" id="19_ochbf"]
+[ext_resource type="AudioStream" uid="uid://b78g8sr6up463" path="res://soundeffects/button.ogg" id="20_gt1ru"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_pbtym"]
 size = Vector2(24, 190)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_75dro"]
 size = Vector2(28, 186)
+
+[sub_resource type="Curve" id="Curve_gt1ru"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.9771196, 0.31509173), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Gradient" id="Gradient_52bgd"]
+interpolation_mode = 2
+offsets = PackedFloat32Array(0, 0.2946299, 0.68214804, 1)
+colors = PackedColorArray(0.92198336, 0.94, 0.7238, 1, 0.8536, 0.97, 0.96224004, 1, 0.98769003, 0.8514, 0.99, 1, 1, 1, 1, 1)
+
+[sub_resource type="Curve" id="Curve_kg6nc"]
+_limits = [-1.0, 1.0, 0.0, 1.0]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, -0.21368682), 0.0, 0.0, 0, 0]
+point_count = 2
 
 [sub_resource type="Curve" id="Curve_ochbf"]
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.96851856, 0.119092345), 0.0, 0.0, 0, 0]
@@ -88,15 +103,31 @@ shape = SubResource("RectangleShape2D_75dro")
 [node name="Ball" type="CharacterBody2D" parent="." unique_id=193951003]
 script = ExtResource("6_btl6j")
 
+[node name="tail_particle" type="CPUParticles2D" parent="Ball" unique_id=1742069616]
+position = Vector2(63, 326)
+amount = 700
+lifetime = 0.2
+emission_shape = 1
+emission_sphere_radius = 11.95
+direction = Vector2(3, 0)
+gravity = Vector2(0, 0)
+radial_accel_min = -100.0
+radial_accel_max = -90.0
+scale_amount_min = 0.5
+scale_amount_max = 2.0
+scale_amount_curve = SubResource("Curve_gt1ru")
+color_ramp = SubResource("Gradient_52bgd")
+hue_variation_curve = SubResource("Curve_kg6nc")
+
 [node name="Sprite2D" type="Sprite2D" parent="Ball" unique_id=47610442]
 position = Vector2(63, 326)
 texture = ExtResource("6_pbtym")
 
-[node name="CPUParticles2D" type="CPUParticles2D" parent="Ball" unique_id=1413293219]
+[node name="impact_particle" type="CPUParticles2D" parent="Ball" unique_id=1413293219]
 position = Vector2(63, 326)
 emitting = false
 amount = 50
-lifetime = 1.5999999999999999
+lifetime = 1.6
 one_shot = true
 explosiveness = 1.0
 lifetime_randomness = 1.0
@@ -248,8 +279,13 @@ theme_override_styles/normal = SubResource("StyleBoxEmpty_ochbf")
 theme_override_styles/pressed = SubResource("StyleBoxEmpty_gt1ru")
 theme_override_styles/hover = SubResource("StyleBoxEmpty_52bgd")
 
-[node name="backgroundMusic" type="AudioStreamPlayer2D" parent="." unique_id=980652781]
+[node name="sounds" type="Node2D" parent="." unique_id=152743888]
+
+[node name="backgroundMusic" type="AudioStreamPlayer2D" parent="sounds" unique_id=980652781]
 autoplay = true
+
+[node name="button_press_sound_effect" type="AudioStreamPlayer2D" parent="sounds" unique_id=993334771]
+stream = ExtResource("20_gt1ru")
 
 [connection signal="score" from="Ball" to="." method="_ball_score"]
 [connection signal="area_entered" from="Ball/Area2D" to="Ball" method="_on_area_2d_area_entered"]

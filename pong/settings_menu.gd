@@ -19,6 +19,7 @@ func hide_menu_hor() -> void:
 	tween.finished.connect(func(): visible = false)
 
 func _on_back_btn_pressed() -> void:
+	get_parent().playButtonSoundEffect()
 	hide_menu_hor()             
 	pause_menu.show_menu_hor()  
 
@@ -27,5 +28,6 @@ func _on_settingsbtn_pressed() -> void:
 
 
 func _on_button_pressed() -> void:
+	get_parent().playButtonSoundEffect()
 	hide_menu_hor()
 	pause_menu.show_menu_hor()

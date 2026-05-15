@@ -1,0 +1,17 @@
+[gd_resource type="Theme" format=3 uid="uid://i1x2m4kjm1tr"]
+
+[ext_resource type="FontFile" uid="uid://243jd4bh72jq" path="res://assets/font/Disket-Mono-Regular.ttf" id="1_by7fs"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_tx1aj"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_3rtri"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_6p2tb"]
+
+[resource]
+Button/colors/font_color = Color(0.82, 0.82, 0.82, 1)
+Button/font_sizes/font_size = 170
+Button/fonts/font = ExtResource("1_by7fs")
+Button/styles/hover = SubResource("StyleBoxEmpty_tx1aj")
+Button/styles/normal = SubResource("StyleBoxEmpty_3rtri")
+Button/styles/pressed = SubResource("StyleBoxEmpty_6p2tb")
