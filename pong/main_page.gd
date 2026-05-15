@@ -15,7 +15,7 @@ func _process(delta: float) -> void:
 
 func _ready () -> void:
 	h_slider_2.value=AudioServer.get_bus_volume_db(AudioServer.get_bus_index("Master"))
-
+	
 
 func _ball_score(score: int) -> void:
 	if score > 0:
@@ -36,7 +36,6 @@ func _on_quit_btn_pressed() -> void:
 	get_tree().change_scene_to_file("res://starter_menu.tscn")
 
 func playButtonSoundEffect() -> void:
-	print("player")
 	button_press_sound_effect.play()
 
 
@@ -46,3 +45,11 @@ func _on_h_slider_2_value_changed(value: float) -> void:
 	if value==-28:
 		Global.audio= -100
 	AudioServer.set_bus_volume_db(AudioServer.get_bus_index("Master"), Global.audio)
+
+
+func _on_back_to_pause_pressed() -> void:
+	pass # Replace with function body.
+
+
+func _on_check_button_pressed() -> void:
+	playButtonSoundEffect()

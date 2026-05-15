@@ -9,10 +9,11 @@
 [ext_resource type="Script" uid="uid://eliecyt1b6ka" path="res://two_player.gd" id="4_baj63"]
 [ext_resource type="Texture2D" uid="uid://cbgg0p2tsy7qv" path="res://assets/font/Main_settings_menu.png" id="4_ck0tr"]
 [ext_resource type="Script" uid="uid://cfcp08uo24otb" path="res://start_settings_menu.gd" id="8_d12d5"]
-[ext_resource type="Texture2D" uid="uid://c1oj32y7p0yud" path="res://assets/mouse.png" id="9_d12d5"]
-[ext_resource type="Texture2D" uid="uid://cfcojdpuwwafy" path="res://assets/keyboard.png" id="10_mwqcb"]
+[ext_resource type="Texture2D" uid="uid://bmpxt74tiilg1" path="res://assets/pixil-frame-0 (7).png" id="10_d12d5"]
+[ext_resource type="Texture2D" uid="uid://bxx4p34ndmw7y" path="res://assets/pixil-frame-0 (6).png" id="11_mwqcb"]
 [ext_resource type="Script" uid="uid://b01hsubmuinxg" path="res://check_button.gd" id="11_r5ocj"]
 [ext_resource type="AudioStream" uid="uid://b78g8sr6up463" path="res://soundeffects/button.ogg" id="14_d12d5"]
+[ext_resource type="AudioStream" uid="uid://cpknkdebke3nw" path="res://soundeffects/djartmusic-so-happy-with-my-8-bit-game-301275.mp3" id="14_mwqcb"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_lijk4"]
 
@@ -47,6 +48,8 @@
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_nq0ag"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_3ufs1"]
+
+[sub_resource type="ImageTexture" id="ImageTexture_r5ocj"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_7cfyr"]
 
@@ -200,10 +203,20 @@ offset_top = -42.553345
 offset_right = 160.29102
 offset_bottom = 165.44666
 
-[node name="CheckButton" type="CheckButton" parent="settings_menu/settings_menu_pic/Sprite2D/MarginContainer" unique_id=820255503]
-layout_mode = 2
-theme_override_icons/checked = ExtResource("9_d12d5")
-theme_override_icons/unchecked = ExtResource("10_mwqcb")
+[node name="Sprite2D" type="Sprite2D" parent="settings_menu/settings_menu_pic/Sprite2D/MarginContainer" unique_id=363495747]
+texture_filter = 1
+position = Vector2(151.70898, 72.94826)
+scale = Vector2(21.367582, 24.316143)
+texture = SubResource("ImageTexture_r5ocj")
+
+[node name="CheckButton" type="CheckButton" parent="settings_menu/settings_menu_pic/Sprite2D/MarginContainer/Sprite2D" unique_id=1416572673]
+offset_left = -13.266643
+offset_top = -7.0000267
+offset_right = 13.733357
+offset_bottom = 7.9999733
+theme_override_constants/outline_size = 8
+theme_override_icons/checked = ExtResource("10_d12d5")
+theme_override_icons/unchecked = ExtResource("11_mwqcb")
 button_mask = 7
 script = ExtResource("11_r5ocj")
 
@@ -218,9 +231,9 @@ theme_override_styles/hover = SubResource("StyleBoxEmpty_3bhke")
 
 [node name="HSlider2" type="HSlider" parent="settings_menu/settings_menu_pic/Sprite2D" unique_id=658090768]
 offset_left = -1091.2699
-offset_top = 43.955856
+offset_top = 439.56024
 offset_right = 1063.7975
-offset_bottom = 1144.2596
+offset_bottom = 804.39545
 theme = SubResource("Theme_ck0tr")
 min_value = -28.0
 max_value = 17.0
@@ -229,6 +242,12 @@ value = 17.0
 [node name="button_press_sound_effect" type="AudioStreamPlayer2D" parent="." unique_id=1376891874]
 stream = ExtResource("14_d12d5")
 
+[node name="bgmusic" type="AudioStreamPlayer2D" parent="." unique_id=850300659]
+stream = ExtResource("14_mwqcb")
+volume_db = -17.596
+autoplay = true
+parameters/looping = true
+
 [connection signal="choosePlayerAmount" from="." to="startMenu/background/onePlayer" method="_on_node_2d_choose_player_amount"]
 [connection signal="choosePlayerAmount" from="." to="startMenu/background/twoPlayer" method="_on_node_2d_choose_player_amount"]
 [connection signal="pressed" from="startMenu/background/onePlayer" to="." method="_on_one_player_pressed"]
@@ -236,6 +255,7 @@ stream = ExtResource("14_d12d5")
 [connection signal="pressed" from="startMenu/background/settings_btn" to="startMenu" method="_on_settingsbtn_pressed"]
 [connection signal="pressed" from="startMenu/background/settings_btn" to="settings_menu" method="_on_settingsbtn_pressed"]
 [connection signal="pressed" from="startMenu/background/exit_btn" to="." method="_on_exit_btn_pressed"]
-[connection signal="pressed" from="settings_menu/settings_menu_pic/Sprite2D/MarginContainer/CheckButton" to="settings_menu/settings_menu_pic/Sprite2D/MarginContainer/CheckButton" method="_on_pressed"]
+[connection signal="pressed" from="settings_menu/settings_menu_pic/Sprite2D/MarginContainer/Sprite2D/CheckButton" to="startMenu" method="_on_check_button_pressed"]
+[connection signal="pressed" from="settings_menu/settings_menu_pic/Sprite2D/MarginContainer/Sprite2D/CheckButton" to="settings_menu/settings_menu_pic/Sprite2D/MarginContainer/Sprite2D/CheckButton" method="_on_pressed"]
 [connection signal="pressed" from="settings_menu/settings_menu_pic/Sprite2D/backToPause" to="settings_menu" method="_on_button_pressed"]
 [connection signal="value_changed" from="settings_menu/settings_menu_pic/Sprite2D/HSlider2" to="." method="_on_h_slider_2_value_changed"]

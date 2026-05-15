@@ -25,3 +25,7 @@ func hide_menu_hor() -> void:
 	var tween = create_tween().set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN)
 	tween.tween_property(self, "position:x", offscreen_x, animation_duration)
 	tween.finished.connect(func(): visible = false)
+
+
+func _on_check_button_pressed() -> void:
+	button_press_sound_effect.play()

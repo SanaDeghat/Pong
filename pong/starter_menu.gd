@@ -32,3 +32,7 @@ func _on_h_slider_2_value_changed(value: float) -> void:
 	if value==-28:
 		Global.audio= -100
 	AudioServer.set_bus_volume_db(AudioServer.get_bus_index("Master"), Global.audio)
+
+
+func _on_exit_btn_pressed() -> void:
+	get_tree().quit()

@@ -29,3 +29,11 @@ func _on_button_pressed() -> void:
 	hide_menu_hor()
 	
 	start_menu.show_menu_hor()
+
+func _input(event):
+	if Input.is_action_just_pressed("pause_action"):
+		hide_menu_hor()
+		start_menu.show_menu_hor()
+
+func _on_check_button_pressed() -> void:
+	button_press_sound_effect.play()
