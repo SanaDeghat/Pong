@@ -13,7 +13,10 @@ config_version=5
 config/name="Pong"
 run/main_scene="uid://b2cwxuharntt2"
 config/features=PackedStringArray("4.6", "GL Compatibility")
-config/icon="res://icon.svg"
+boot_splash/bg_color=Color(0, 0, 0, 1)
+boot_splash/image="uid://bry2byuie03si"
+config/icon="uid://dn7sinq24sn46"
+boot_splash/minimum_display_time=1500
 
 [autoload]
 

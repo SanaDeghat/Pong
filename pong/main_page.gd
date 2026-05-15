@@ -11,7 +11,7 @@ extends Node2D
 @onready var cutin_sprite: Sprite2D = $PixilartDrawing
 
 var blueScore = 0
-var orangeScore = 0
+var orangeScore = -1
 
 func _process(delta: float) -> void:
 	pass

@@ -335,8 +335,9 @@ parameters/looping = true
 stream = ExtResource("20_gt1ru")
 
 [node name="PixilartDrawing" type="Sprite2D" parent="." unique_id=1187838844]
+visible = false
 texture_filter = 1
-position = Vector2(562, 157)
+position = Vector2(577, 167)
 scale = Vector2(38.366665, 38.366665)
 texture = ExtResource("24_humq1")
 script = ExtResource("25_0totl")
